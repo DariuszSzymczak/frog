@@ -1,0 +1,126 @@
+#left_menu{
+    position: absolute;
+    width: 25vw;
+    background: #1b1b1b;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    padding-top: 5vw;
+ 
+}
+
+#left_menu button{
+  width: 100%;
+  padding: 0.5vw;
+  background: #1b1b1b;
+  color: #eaeaea;
+  border: none;
+  border-top: 0.2vw solid #0f0f0f;
+  font-size: 0.9vw;
+  transition: 0.4s linear;
+}
+#left_menu > div >button, #left_menu > span >button{
+  border: none;
+}
+#left_menu button:hover{
+  background: #0f8a29;
+  color: #00320f;
+}
+.focus{
+  background: #00ca47 !important;
+  color: #0f0f0f !important;
+}
+
+#left_menu input[type="number"]{
+  width: 16%;
+  background: #2d2d2d;
+  color: #0f8a29;
+  text-align: center;
+  border: 1px solid;
+  margin-top: 0.2vw;
+  position: relative;
+  right: 0.8vw;
+}
+#left_menu div{
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  background: #0f0f0f;
+  width: 100%;
+}
+#left_menu div div{
+  padding:0vw 0 0.2vw;
+  width: 90%;
+  margin-left: 10%;
+  background: #1a1a1a;
+}
+#left_menu h1,#left_menu h2{
+  font-size: 1.2vw;
+  background: #00000069;
+  color: #eaeaea;
+  width: 90%;
+  margin: 0;
+  margin-left: 10%;
+  margin-top: 0.6vw;
+  cursor: pointer;
+}
+#left_menu h3
+{
+  color: #00ca47;
+  font-size: 0.7vw;
+  text-align: center;
+  padding-top: 0.3vw;
+  
+}
+#left_menu h1:hover,#left_menu h2:hover{
+  background: #0f8a29;
+  color: #00320f;
+}
+
+
+#left_menu div div div{
+  background: #2a2a2a;
+text-align: right;
+}
+#left_menu label{
+color: #eaeaea;
+padding: 0.2vw;
+margin: 1.2vw;
+font-size: 0.9vw !important;
+}
+#left_menu p{
+background: #0f8a29;
+width: 20%;
+text-align: center;
+margin-left: 75%;
+}
+.plus_button{
+  width: 11% !important;
+font-size: 1vw !important;
+background: #029823 !important;
+margin-top: 2.6vw !important;
+}
+#left_menu span{
+margin-left: 44%;
+}
+#left_menu span button{
+display: inline-block;
+width: 27%;
+}
+.cancel_button{
+  background: #910505 !important;
+}
+.cancel_button:hover{
+  background: #e41f1f !important;
+}
+.ok_button{
+  background: #0f8a29  !important; 
+}
+
+.ok_button:hover{
+  background:#00ca47 !important;
+}
+
+.deactive{
+  background: #5e5e5e !important;
+  color: #858585 !important;
+}
