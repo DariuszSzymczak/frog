@@ -103,36 +103,6 @@ function show_tr()
 
 }
 
-
-function show_tr2(){
-  if($('#tr_inner').length == '0'){
-    $('#tr_button').remove();
-    let table = $(main_container+' table').last().attr('id');
-    let tr = $(this).attr('data-nr');
-    let tr_id = '#'+table+'_tr'+tr;
-    let td_list = $(tr_id+' td');
-    target(table+'_tr'+tr);
-    console.log(td_list.length);
-    let tr_outer ='<span id="tr_outer" class="table_outer"  ><button id="tr_cancel" class="cancel_button">X</button><button \
-     id="tr_ok" class="ok_button" >OK</button></span>';
-    let td_button= '<button id="td_button" class="plus_button">+</button>';
-    let tr_inner= '<div id="tr_inner" ></div>' ;
-    $(this).after(tr_inner+tr_outer);
-    $('h1').removeClass('focus');
-    $(this).addClass('focus');
-    for(let td_number=0;td_number<td_list.length;td_number++)
-    {
-      $('#tr_inner').append('<h2 data-nr='+td_number+' id="h2_td'+td_number+'">Element nr'+td_number+'</h2>');
-      $('#h2_td'+td_number).on('click',show_td);
-    }
-   $('#tr_inner').append(td_button);
-   $('#td_button').on('click',Ctd);
-   $('#tr_button').on('click',Ctr);
-   $('#tr_cancel').on('click',cancel_tr);
-   $('#tr_ok').on('click',accept_tr);
-  }
-}
-
 function show_td()
 {
   if($('#td_inner').length == '0')
