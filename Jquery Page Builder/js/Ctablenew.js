@@ -5,7 +5,7 @@ $(document).ready(function()
 
 
 function create_table()
-{  
+{ 
   let table_id = add_element_to_target(target_container,'table','table');
   let main_box = create_box('table2_button',table_id);
   create_plus_button(main_box,function(){create_tr(main_box,table_id)});
@@ -43,18 +43,18 @@ function create_td(parent_id,row_id)
   <label for="td_heigth">Wysokość ( colspan ) : </label> <input id="td_heigth" name="td_heigth" type="number" min="1" value="1"  ></br>';
   let inputs2 = '<p>TD: <input type="radio" name="td_type" value="TD" checked ></input> TH: <input type="radio" name="td_type" value="TH"></input></p>';
   let header = create_header(parent_id,'h2',show_td,'komórka nr ');
+  let header_nr = $('#'+header).attr('data-nr');
   let td_box = create_box(header,"",td_accept,td_cancel);
   $('#'+td_box).append(inputs1+inputs2);
-  console.log('td_box: '+td_box);
-
+  
   function td_accept()
   {
     let w = $('#td_width').val();
     let h = $('#td_heigth').val();
     let type = $('input:checked[name="td_type"]').val();
-    let element = add_element_to_target(row_id,type,type);
-    $('#'+element).attr('rowspan',w);
-    $('#'+element).attr('colspan',h);
+    let element = add_element_to_target(row_id,type,type,header_nr);
+    $('#'+element).attr('rowspan',h);
+    $('#'+element).attr('colspan',w);
     $('#'+element).html('edytuj mnie');
     create_plus_button(parent_id,function(){create_td(parent_id,row_id)});
     target(row_id);
@@ -80,10 +80,9 @@ function show_tr()
   let row_box = create_box(this_id,row_id,accept_tr,cancel_tr);
 
   let elements = $('#'+row_id+' th,#'+row_id+' td').each(function()
-  {
-    let type = $(this).prop('tagName');
-    let nr = $(this).attr('data-nr');
-    create_header(row_box,'h2',show_td,type,nr);
+  {    
+    let header = create_header(row_box,'h2',show_td,'komórka nr ');
+
   });
 
   $('#'+parent_id+"_plus_button").remove();
@@ -105,39 +104,35 @@ function show_tr()
 
 function show_td()
 {
-  if($('#td_inner').length == '0')
+  let this_id = $(this).attr('id');
+  let parent_id =$(this).parent().attr('id');  
+  let this_nr = $(this).attr('data-nr');
+  let td_id = $('#'+target_container).find('*[data-nr="'+this_nr+'"]').attr('id');
+  let row_id = $('#'+td_id).parent().attr('id');
+  $('#'+parent_id+"_plus_button").remove(); 
+  let colspan = $('#'+td_id).attr('colspan');
+  let rowspan = $('#'+td_id).attr('rowspan');
+  let nr = $('#'+td_id).attr('data-nr');
+  let inputs1 =  '<label for="td_width">Szerokość ( rowspan ) : </label> <input id="td_width" type="number" min="1" name="td_width" value="'+rowspan+'" ></input></br> \
+  <label for="td_heigth">Wysokość ( colspan ) : </label> <input id="td_heigth" name="td_heigth" type="number" min="1" value="'+colspan+'"  ></br>';
+  let inputs2 = '<p>TD: <input type="radio" name="td_type" value="TD" checked ></input> TH: <input type="radio" name="td_type" value="TH"></input></p>';
+  let td_box = create_box(this_id,"",td_accept,td_cancel);
+  $('#'+td_box).append(inputs1+inputs2);
+  $('input:radio[name="td_type"]').filter('input:radio[value="'+$('#'+td_id).prop('tagName')+'"]').prop('checked',true);
+  function td_accept()
   {
-    $('#td_button').remove();
-    let td_id = target_container+'_td'+$(this).attr('data-nr');
-    console.log('target:'+target_container+'nodename: '+$('#'+td_id).prop('tagName'));
-    let input1_val = $('#'+td_id).attr('colspan');
-    let input2_val = $('#'+td_id).attr('rowspan');
-    let inputs1 = '<label for="td_width">Szerokość ( rowspan ) : </label> <input id="td_width" type="number" min="1" name="td_width" value="'+input1_val+'"></input></br> \
-    <label for="td_heigth">Wysokość ( colspan ) : </label> <input id="td_heigth" name="td_heigth" type="number" min="1" value="'+input2_val+'" ></br>';
-    let inputs2 = '<p>TD: <input type="radio" name="td_type" value="TD" checked> TH: <input type="radio" name="td_type" value="TH"></p>';
-    let td_inner = '<div id="td_inner">'+inputs1+inputs2+'</div>';
-    let td_outer ='<span id="td_outer" class="table_outer"><button id="td_cancel" class="cancel_button">X</button><button id="td_ok" class="ok_button" >OK</button></span>';
-    $(this).after(td_inner+td_outer);
-    $('h2').removeClass('focus');
-    $(this).addClass('focus');
-    $('input:radio[name="td_type"]').filter('input:radio[value="'+$('#'+td_id).prop('tagName')+'"]').prop('checked',true);
+    let w = $('#td_width').val();
+    let h = $('#td_heigth').val();
+    let type = $('input:checked[name="td_type"]').val();
+    let text = $('#'+td_id).html();
+    $('#'+td_id).replaceWith('<'+type+' id="'+td_id+'"  data-nr="'+nr+'" colspan="'+w+'" rowspan="'+h+'" >'+text+'</'+type+'>');
+    create_plus_button(parent_id,function(){create_td(parent_id,row_id)});
+    target(row_id);
+  }
 
-    $('#td_ok').on('click',function(){
-      let w = $('#td_width').val();
-      let h = $('#td_heigth').val();
-      let type = $('input:checked[name="td_type"]').val();
-      $('#'+td_id).replaceWith('<'+type+' id="'+td_id+'" colspan="'+w+'" rowspan="'+h+'" >'+td_id+'</'+type+'>');
-      $('#td_inner').remove();
-      $('#td_outer').remove();
-      $('#tr_inner').append('<button id="td_button" class="plus_button">+</button>');
-      $('#td_button').on('click',Ctd);
-
-    });
-
-    $('#td_cancel').on('click',function(){
-      cancel_td();
-      $('#'+td_id).remove();
-    });
-
+  function td_cancel()
+  {
+    create_plus_button(parent_id,function(){create_td(parent_id,row_id)});
+    $('#'+header).remove();
   }
 }

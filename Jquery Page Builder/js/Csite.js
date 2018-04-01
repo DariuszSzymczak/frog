@@ -95,7 +95,7 @@ function Ccol(){
     console.log('#'+target_container);
     $('#'+target_container).append('<div id="'+col_id+'" data-lg="'+large+'" data-md="'+tablet+'" data-xs="'+mobile+'"\
      class="col-lg-'+large+' col-md-'+tablet+' col-xs-'+mobile+'" \
-     >'+col_id+'</div>');
+     >edytuj mnie</div>');
     $('#col_inner').remove();
     $('#col_outer').remove();
     $('#row_outer').show();

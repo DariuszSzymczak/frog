@@ -30,9 +30,12 @@ function edit_element()
 }
 
 //add a node to target_container
-function add_element_to_target(parent_id,id,type)
+function add_element_to_target(parent_id,id,type,nr)
 {   
-    const count = count_created_elements(parent_id,type) + 1 ;
+    const target_text = $('#'+target_container).html();
+    if( target_text == "edytuj mnie") $('#'+target_container).html("");
+    let count = count_created_elements(parent_id,type) + 1 ;
+    if( nr >= 0) count = nr;
     const item = '<'+type+' id="'+parent_id+'_'+id+count+'" data-nr="'+count+'" ></'+type+'>';
     console.log('dodaje element do: '+target_container);
     $('#'+target_container).append(item);
@@ -127,7 +130,7 @@ function create_header(parent_id,type,action,text,nr)
 {
     let number = count_created_elements(parent_id,type) + 1 ;
     if(nr >= 0 ) number = nr;
-    let header = '<'+type+' data-nr="'+number+'" id="'+parent_id+'_'+type+'_'+number+'">'+text+number+'</'+type+'>';
+    let header = '<'+type+' data-nr="'+number+'"   id="'+parent_id+'_'+type+'_'+number+'">'+text+number+'</'+type+'>';
     $('#'+parent_id).append(header);
     $('#'+parent_id+'_'+type+'_'+number).on('click',action);
     return parent_id+'_'+type+'_'+number;
