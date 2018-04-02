@@ -17,6 +17,7 @@
 		<script>
 		var main_container = '#content'; // id of main container with elements
 		var left_menu = '#left_menu'; //id of left_menu
+		var right_menu = '#right_menu'; //id of right_menu
 		var target_container = 'content'; //focused container by mouse
 		</script>
 
@@ -31,6 +32,11 @@
     <div id="container" class="container">
 			<button id="hide_menu" data-hide="0" class="btn btn-success">UKRYJ MENU</button>
 			<div id="left_menu"></div>
+			<div id="right_menu">
+				<image id="right_menu_delete" src='img/x.png'></image>
+				<image id="right_menu_edit" src='img/edit.png'></image>
+				<image id="right_menu_style" src='img/style.png'></image>
+			</div>
 			<div id="content" data-width="" data-left=""></div>
 			<script src="js/functions.js"></script>
 			<script src="js/page.js"></script>
