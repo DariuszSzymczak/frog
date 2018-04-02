@@ -1,19 +1,34 @@
 $(document).ready(function()
 {
-  add_button_to_menu('table2_button','tabela framework',create_table);
+  add_button_to_menu('table2_button','stwórz tabele',create_table);
 });
 
 
 function create_table()
 { 
-  let table_id = add_element_to_target(target_container,'table','table');
-  let main_box = create_box('table2_button',table_id);
-  create_plus_button(main_box,function(){create_tr(main_box,table_id)});
+  check_to_create('table2_button',function()
+  {
+    let table_id = add_element_to_target(target_container,'table','table',-1,'edit_table');
+    $('#'+table_id).text('edytuj mnie');
+    let main_box = create_box('table2_button',table_id,accept_all);
+    create_plus_button(main_box,function(){create_tr(main_box,table_id)});
+
+    function accept_all()
+    {
+      $('#'+main_box).find('.ok_button').click();
+    }
+  });  
+}
+
+function edit_table()
+{
+  console.log('dziala edittable');
 }
 
 function create_tr(parent_id,table_id)
 {
-  let row_id = add_element_to_target(target_container,'tr','tr');  
+  let row_id = add_element_to_target(target_container,'tr','tr',-1,'edit_table');  
+  target(row_id);
   let header = create_header(parent_id,'h1',show_tr,'wiersz nr ');
 
   function accept_tr()
@@ -30,15 +45,14 @@ function create_tr(parent_id,table_id)
 
   let row_box = create_box(header,row_id,accept_tr,cancel_tr);
   let button = create_plus_button(row_box,function(){create_td(row_box,row_id)});
-  console.log('row_box_plus: '+button);
   $('#'+parent_id+"_plus_button").remove();
-  console.log('row_box: '+row_box);
 }
 
 
 function create_td(parent_id,row_id)
 {
-  $('#'+parent_id+"_plus_button").remove(); 
+  $('#'+parent_id+"_plus_button").remove();
+  $('#'+parent_id).parent().find('.table_outer').hide(); 
   let inputs1 =  '<label for="td_width">Szerokość ( rowspan ) : </label> <input id="td_width" type="number" min="1" name="td_width" value="1" ></input></br> \
   <label for="td_heigth">Wysokość ( colspan ) : </label> <input id="td_heigth" name="td_heigth" type="number" min="1" value="1"  ></br>';
   let inputs2 = '<p>TD: <input type="radio" name="td_type" value="TD" checked ></input> TH: <input type="radio" name="td_type" value="TH"></input></p>';
@@ -52,16 +66,18 @@ function create_td(parent_id,row_id)
     let w = $('#td_width').val();
     let h = $('#td_heigth').val();
     let type = $('input:checked[name="td_type"]').val();
-    let element = add_element_to_target(row_id,type,type,header_nr);
+    let element = add_element_to_target(row_id,type,type,header_nr,'edit_table');
     $('#'+element).attr('rowspan',h);
     $('#'+element).attr('colspan',w);
     $('#'+element).html('edytuj mnie');
     create_plus_button(parent_id,function(){create_td(parent_id,row_id)});
+    $('#'+parent_id).parent().find('.table_outer').show(); 
     target(row_id);
   }
 
   function td_cancel()
   {
+    $('#'+parent_id).parent().find('.table_outer').show(); 
     create_plus_button(parent_id,function(){create_td(parent_id,row_id)});
     $('#'+header).remove();
   }
@@ -71,34 +87,39 @@ function create_td(parent_id,row_id)
 function show_tr()
 {
   let this_id = $(this).attr('id');
-  let parent_id =$(this).parent().attr('id');  
+  let parent_id =$(this).parent().attr('id'); 
+  $('#'+parent_id+"_plus_button").remove();
   let this_nr = $(this).attr('data-nr');
   let row_id = $('#'+target_container).find('tr[data-nr="'+this_nr+'"]').attr('id');
   let table_id = $('#'+row_id).parent().attr('id');
-  console.log('tablea: '+table_id);
   target(row_id);
-  let row_box = create_box(this_id,row_id,accept_tr,cancel_tr);
-
-  let elements = $('#'+row_id+' th,#'+row_id+' td').each(function()
-  {    
-    let header = create_header(row_box,'h2',show_td,'komórka nr ');
-
-  });
-
-  $('#'+parent_id+"_plus_button").remove();
-  let button = create_plus_button(row_box,function(){create_td(row_box,row_id)});
+check_to_create(this_id,function()
+  {
+     
+ 
+    let row_box = create_box(this_id,row_id,accept_tr,cancel_tr);
   
-  function accept_tr()
-  {
-    create_plus_button(parent_id,function(){create_tr(parent_id,table_id)});
-    target(table_id);
-  }
-
-  function cancel_tr()
-  {
-    create_plus_button(parent_id,function(){create_tr(parent_id,table_id)});
-    $('#'+this_id).remove();
-  }
+    let elements = $('#'+row_id+' th,#'+row_id+' td').each(function()
+    {    
+      let header = create_header(row_box,'h2',show_td,'komórka nr ');
+  
+    });
+  
+    
+    let button = create_plus_button(row_box,function(){create_td(row_box,row_id)});
+    
+    function accept_tr()
+    {
+      create_plus_button(parent_id,function(){create_tr(parent_id,table_id)});
+      target(table_id);
+    }
+  
+    function cancel_tr()
+    {
+      create_plus_button(parent_id,function(){create_tr(parent_id,table_id)});
+      $('#'+this_id).remove();
+    }
+  });
 
 }
 

@@ -18,26 +18,20 @@ function target(string1)
   target_container = string1;
   $(main_container).find('.active_element').removeClass('active_element');
   $('#'+string1).addClass('active_element'); 
-  edit_element();
+  setTimeout(function(){right_menu_show(string1)},1000);
 }
 
-// box with tools to edit or remove active element
-function edit_element()
-{
-    let width = $('#'+target_container).width();
-    let height = '1vw';
-    console.log('szerokosc elementu: '+width);
-}
+
+
 
 //add a node to target_container
-function add_element_to_target(parent_id,id,type,nr)
+function add_element_to_target(parent_id,id,type,nr,action)
 {   
     const target_text = $('#'+target_container).html();
     if( target_text == "edytuj mnie") $('#'+target_container).html("");
     let count = count_created_elements(parent_id,type) + 1 ;
     if( nr >= 0) count = nr;
-    const item = '<'+type+' id="'+parent_id+'_'+id+count+'" data-nr="'+count+'" ></'+type+'>';
-    console.log('dodaje element do: '+target_container);
+    const item = '<'+type+' id="'+parent_id+'_'+id+count+'" data-nr="'+count+'" data-action="'+action+'" ></'+type+'>';
     $('#'+target_container).append(item);
     target(parent_id+'_'+id+count);
     return parent_id+'_'+id+count;
@@ -45,7 +39,6 @@ function add_element_to_target(parent_id,id,type,nr)
 
 function remove_element(id)
 {
-    console.log('usuwam : '+id);
     target($('#'+id).parent().attr('id'));
     $('#'+id).remove();
 }
@@ -58,13 +51,22 @@ function count_created_elements(parent_id,type)
     {
         if(count <= parseInt( $(this).attr('data-nr') ) ) count = parseInt( $(this).attr('data-nr') );
     });
-    console.log('ilosc elementów typu:'+type+'to :'+count);
     return count;
 }
 
 //----------------------------------------------------------------------------------------------------------
-//------------------------------------------------MENU------------------------------------------------------
+//------------------------------------------------LEFT MENU------------------------------------------------------
 
+//create only if other windows are closed
+function check_to_create(parent_id,action)
+{
+    if($('#'+parent_id).parent().find('.table_outer:visible').length == 0)
+    {
+    action();
+    }
+}
+
+//add plugin button to menu
 function add_button_to_menu(id,name,button_action)
 {
     $(left_menu).append('<button id="'+id+'" class="deactive" data-active=0 >'+name+'</button>');
@@ -81,7 +83,6 @@ function create_box(parent_id,content_id,ok_action,cancel_action)
 
     if($('#'+parent_id).parent().find('.table_outer:visible').length == 0)
     {
-        
         if($('#'+parent_id).hasClass('deactive')== false)
         {
             $('.focus').removeClass('focus');
@@ -92,7 +93,6 @@ function create_box(parent_id,content_id,ok_action,cancel_action)
             
             $('#'+parent_id+'_cancel').on('click',function()
             {
-                console.log('usuwam iner:'+ $('#'+parent_id+'_inner').attr('id'));
                 $('#'+parent_id+'_inner').remove();
                 $('#'+parent_id+'_outer').remove();
                 $('.focus').removeClass('focus');
@@ -112,6 +112,7 @@ function create_box(parent_id,content_id,ok_action,cancel_action)
         {
             alert('proszę najpierw stworzyć szablon strony');
         }
+        
     }
     
 
@@ -136,3 +137,37 @@ function create_header(parent_id,type,action,text,nr)
     return parent_id+'_'+type+'_'+number;
 }
 
+
+//---------------------------------------------------------------------------------------------------------------
+//------------------------------------------------RIGHT MENU------------------------------------------------------
+
+// box with tools to edit or remove active element
+function right_menu_show(target)
+{
+    const type1 = $('#'+target).attr('data-action')
+
+    if ( typeof type1  !== typeof undefined && type1 != false && type1 != "undefined" && $('.table_outer:visible').length == 0 ) 
+    {
+      $(right_menu).css({'height' : 'auto', 'padding': '3vw 0'});
+    }
+    else
+    {
+        $(right_menu).css({'height' : '0vh', 'padding': '0'}); 
+    }
+}
+
+
+function right_menu_delete()
+{
+    const parent = $('#'+target_container).parent().attr('id');
+    $('#'+target_container).remove();
+    target(parent);
+}
+
+function right_menu_edit()
+{
+    const id = $('#'+target_container).attr('id');
+    const action1 = $('#'+target_container).attr('data-action');
+    let run = window[action1];
+    run();
+}

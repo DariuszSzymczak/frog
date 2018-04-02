@@ -8,7 +8,7 @@ $(document).ready(function(){
 
 // hide and show left menu, set width of content 
 $('#hide_menu').on('click',function(){
-  $(left_menu).toggle();
+  $(left_menu).toggle();  
   var main_container_width = $(main_container).attr('data-width');
   var main_container_left = $(main_container).attr('data-left');
   if ($('#hide_menu').attr('data-hide') == 0  )
@@ -23,5 +23,9 @@ $('#hide_menu').on('click',function(){
     $('#hide_menu').attr('data-hide',0);
     $('#hide_menu').text('UKRYJ MENU');
   }
+  
 });
+
+$('#right_menu_delete').on('click',right_menu_delete);
+$('#right_menu_edit').on('click',right_menu_edit);
 

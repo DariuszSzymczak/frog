@@ -87,3 +87,29 @@ letter-spacing: 5px;
 .active_element{
   border: 0.3vw inset #fe2c2cb3 !important;
 }
+
+#right_menu{
+  position: fixed;
+  width: 4vw;
+  height: 0vh;
+  background: rgba(15, 15, 15, 0.25);
+  right: 0;
+  top: 2vw;
+  text-align: center;
+  transition: 1s all;
+  overflow: hidden;
+}
+
+#right_menu img{
+  width: 61%;
+  margin-bottom: 2vw;
+  transition: 1s all;
+}
+
+#right_menu img:hover{
+  transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
+  -webkit-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
+  -moz-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
+  -o-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
+  -ms-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
+}
