@@ -1,14 +1,11 @@
 $(document).ready(function(){
 $(left_menu).append('<button id="site_button" data-active=0 >szablon strony</button>');
 $('#site_button').on('click',Csite);
-
-
 });
 
 
 function Csite(){
   target_container = 'content';
-  console.log("length rowow: "+$('.row').length);
   if($('#site_button').attr('data-active') == 0)
   {
     if($('.row').length == 0)
@@ -33,7 +30,6 @@ function Csite(){
 }
 
 function Crow(){
-  console.log('poczatek :'+target_container);
   $('#row_button').remove();
   let row_outer ='<span id="row_outer" class="table_outer"  ><button id="row_cancel" class="cancel_button">X</button><button id="row_ok" class="ok_button" >OK</button></span>';
   var row_number =0;
@@ -41,7 +37,6 @@ function Crow(){
     let id = parseInt( $(this).attr('id').match(/\d+/) ); 
     if(id >= row_number) row_number = id+1;
    });
-   console.log('bede tworzyc w :'+target_container);
   let row_id = target_container+'_row'+row_number;
   $('#'+target_container).append('<div id="'+row_id+'" class="row"> </div>');
   let header = '<h1 data-nr="'+row_number+'" id="h1_row'+row_number+'">  Wiersz nr '+row_number+'</h1>';
@@ -92,10 +87,11 @@ function Ccol(){
     let large = $('#lg_width').val();
     let tablet = $('#md_width').val();
     let mobile = $('#xs_width').val();
-    console.log('#'+target_container);
     $('#'+target_container).append('<div id="'+col_id+'" data-lg="'+large+'" data-md="'+tablet+'" data-xs="'+mobile+'"\
      class="col-lg-'+large+' col-md-'+tablet+' col-xs-'+mobile+'" \
-     >edytuj mnie</div>');
+     ></div>');
+     $('#'+col_id).append('<button id="'+col_id+'_plus_button" class="active_col_button plus_button">+</div>');
+     $('#'+col_id+'_plus_button').on('click',function(){if( $('.table_outer:visible').length == 0) setTimeout(target(col_id),500)});
     $('#col_inner').remove();
     $('#col_outer').remove();
     $('#row_outer').show();
@@ -119,6 +115,7 @@ function site_accept_create(){
   $('#site_inner, #site_outer').hide();
   $('#site_button').attr('data-active',0);
   if($('.row').length > 0) $(left_menu+' button').removeClass('deactive');
+  $(left_menu+' button').trigger('cssClassChanged');
   $('.focus').removeClass('focus');
   target($('#content div div').first().attr('id'));
 }
@@ -156,7 +153,6 @@ function show_row(){
     let row_id = '#'+target_container+'_row'+row;
     let col_list = $(row_id+' div');
     target_container =target_container+'_row'+row;
-    console.log(col_list.length);
     let row_outer ='<span id="row_outer" class="table_outer"  ><button id="row_cancel" class="cancel_button">X</button><button id="row_ok" class="ok_button" >OK</button></span>';
     let col_button= '<button id="col_button" class="plus_button">+</button>';
     let row_inner= '<div id="row_inner" ></div>' ;
@@ -178,14 +174,12 @@ function show_row(){
 
 function show_col()
 {
-  console.log('show col');
   if($('#col_inner').length == '0')
   {
     $('#col_button').remove();
     $('#row_outer').hide();
     h2_nr=$(this).attr('data-nr');
     let col_id = target_container+'_col'+$(this).attr('data-nr');
-    console.log('target:'+target_container+'nodename: '+$('#'+col_id).prop('tagName'));
     let input1_val = $('#'+col_id).attr('data-lg');
     let input2_val = $('#'+col_id).attr('data-md');
     let input3_val = $('#'+col_id).attr('data-xs');
@@ -205,6 +199,7 @@ function show_col()
       $('#'+col_id).replaceWith('<div id="'+col_id+'" data-lg="'+lg+'" data-md="'+md+'" data-xs="'+xs+'"\
       class="col-lg-'+lg+' col-md-'+md+' col-xs-'+xs+'" \
       >'+data+'</div>');
+      $('#'+col_id+'_plus_button').on('click',function(){if( $('.table_outer:visible').length == 0) setTimeout(target(col_id),500)});
      $('#col_inner').remove();
      $('#col_outer').remove();
      $('#row_inner').append('<button id="col_button" class="plus_button">+</button>');

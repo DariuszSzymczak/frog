@@ -17,12 +17,30 @@ function create_table()
     {
       $('#'+main_box).find('.ok_button').click();
     }
+
   });  
 }
 
+
+
 function edit_table()
 {
-  console.log('dziala edittable');
+  let reg = /.*table[0-9]*/;
+  let reg_result = reg.exec(target_container);
+  table_id = reg_result[0];
+  let main_box = create_box('table2_button',table_id,accept_all);
+  $('#'+table_id+' tr').each(function()
+  {
+    const nr = $(this).attr('data-nr');
+    create_header(main_box,'h1',show_tr,'wiersz nr ',nr);
+  });
+  create_plus_button(main_box,function(){create_tr(main_box,table_id)});
+
+  function accept_all()
+  {
+    $('#'+main_box).find('.ok_button').click();
+  }
+  target(table_id);
 }
 
 function create_tr(parent_id,table_id)
@@ -67,8 +85,8 @@ function create_td(parent_id,row_id)
     let h = $('#td_heigth').val();
     let type = $('input:checked[name="td_type"]').val();
     let element = add_element_to_target(row_id,type,type,header_nr,'edit_table');
-    $('#'+element).attr('rowspan',h);
-    $('#'+element).attr('colspan',w);
+    $('#'+element).attr('rowspan',w);
+    $('#'+element).attr('colspan',h);
     $('#'+element).html('edytuj mnie');
     create_plus_button(parent_id,function(){create_td(parent_id,row_id)});
     $('#'+parent_id).parent().find('.table_outer').show(); 
@@ -137,7 +155,7 @@ function show_td()
   let inputs1 =  '<label for="td_width">Szerokość ( rowspan ) : </label> <input id="td_width" type="number" min="1" name="td_width" value="'+rowspan+'" ></input></br> \
   <label for="td_heigth">Wysokość ( colspan ) : </label> <input id="td_heigth" name="td_heigth" type="number" min="1" value="'+colspan+'"  ></br>';
   let inputs2 = '<p>TD: <input type="radio" name="td_type" value="TD" checked ></input> TH: <input type="radio" name="td_type" value="TH"></input></p>';
-  let td_box = create_box(this_id,"",td_accept,td_cancel);
+  let td_box = create_box(this_id,td_id,td_accept,td_cancel);
   $('#'+td_box).append(inputs1+inputs2);
   $('input:radio[name="td_type"]').filter('input:radio[value="'+$('#'+td_id).prop('tagName')+'"]').prop('checked',true);
   function td_accept()
@@ -146,7 +164,8 @@ function show_td()
     let h = $('#td_heigth').val();
     let type = $('input:checked[name="td_type"]').val();
     let text = $('#'+td_id).html();
-    $('#'+td_id).replaceWith('<'+type+' id="'+td_id+'"  data-nr="'+nr+'" colspan="'+w+'" rowspan="'+h+'" >'+text+'</'+type+'>');
+    let action = $('#'+td_id).attr('data-action');
+    $('#'+td_id).replaceWith('<'+type+' id="'+td_id+'"  data-nr="'+nr+'" colspan="'+w+'" rowspan="'+h+'" data-action="'+action+'" >'+text+'</'+type+'>');
     create_plus_button(parent_id,function(){create_td(parent_id,row_id)});
     target(row_id);
   }
@@ -154,6 +173,6 @@ function show_td()
   function td_cancel()
   {
     create_plus_button(parent_id,function(){create_td(parent_id,row_id)});
-    $('#'+header).remove();
+    $('#'+this_id).remove();
   }
 }

@@ -6,9 +6,11 @@ function target_element_mouse()
 {
     if( $('.table_outer:visible').length == 0)
     {
+        
         id = $(this).attr('id');
-        $(main_container).find('*').off(); 
         if($('.focus').length == 0) target(id);
+        parent_id = $(this).parent().attr('id');
+        $(main_container+' *:not(.plus_button)').off();
     }
 }
 
@@ -32,7 +34,8 @@ function add_element_to_target(parent_id,id,type,nr,action)
     let count = count_created_elements(parent_id,type) + 1 ;
     if( nr >= 0) count = nr;
     const item = '<'+type+' id="'+parent_id+'_'+id+count+'" data-nr="'+count+'" data-action="'+action+'" ></'+type+'>';
-    $('#'+target_container).append(item);
+    if ($('#'+target_container+'_plus_button').length == 1) $('#'+target_container+'_plus_button').before(item);
+    else $('#'+target_container).append(item);
     target(parent_id+'_'+id+count);
     return parent_id+'_'+id+count;
 }
@@ -69,16 +72,37 @@ function check_to_create(parent_id,action)
 //add plugin button to menu
 function add_button_to_menu(id,name,button_action)
 {
-    $(left_menu).append('<button id="'+id+'" class="deactive" data-active=0 >'+name+'</button>');
+    $(left_menu).append('<button id="'+id+'" class="deactive" data-active=0 ><h4>'+name+'</h4></button>');
+    $('#'+id).append('<img id="'+id+'_arrow"src="img/arrow.png" class="arrow"/>');   
+    const arrow_id = id+'_arrow'; 
+
+    function animate_arrow()
+    {
+        if ( $('#'+id).hasClass('deactive') == false ) $('#'+arrow_id).css({'opacity':'1'});
+        if($('#'+id).hasClass('focus') == true ) $('#'+arrow_id).addClass('rotated');
+    }
     $('#'+id).on('click',button_action);  
+    $('#'+id).on('cssClassChanged',animate_arrow);
+}
+
+function create_cancel_button(parent_id)
+{
+    $('#'+parent_id+'_outer').append('<button id="'+parent_id+'_cancel" class="cancel_button">anuluj</button>');
+    $('#'+parent_id+'_cancel').on('click',function()
+            {
+                $('#'+parent_id+'_inner').remove();
+                $('#'+parent_id+'_outer').remove();
+                $('.focus').removeClass('focus');
+                $('#'+parent_id+'_outer').css({'margin-left':'13%'});
+            });
 }
 
 //function to create box for clicked button
-function create_box(parent_id,content_id,ok_action,cancel_action)
+function create_box(parent_id,content_id,ok_action,delete_action)
 {
     let table_inner = '<div id="'+parent_id+'_inner"></div>';
-    let table_outer ='<span id="'+parent_id+'_outer" class="table_outer"><button id="'+parent_id+'_cancel" class="cancel_button">X</button> \
-    <button id="'+parent_id+'_ok" class="ok_button" >OK</button></span>';
+    let table_outer ='<span id="'+parent_id+'_outer" class="table_outer"> \
+    <button id="'+parent_id+'_delete" class="delete_button">X</button> <button id="'+parent_id+'_ok" class="ok_button" >OK</button></span>';
 
 
     if($('#'+parent_id).parent().find('.table_outer:visible').length == 0)
@@ -86,24 +110,27 @@ function create_box(parent_id,content_id,ok_action,cancel_action)
         if($('#'+parent_id).hasClass('deactive')== false)
         {
             $('.focus').removeClass('focus');
-            $('#'+parent_id).addClass('focus');    
+            $('#'+parent_id).addClass('focus'); 
+            $('#'+parent_id).trigger('cssClassChanged');   
             $('#'+parent_id).after(table_inner + table_outer);
-            if ($.isFunction(cancel_action)) $('#'+parent_id+'_cancel').on('click',cancel_action);
+            if ($.isFunction(delete_action)) $('#'+parent_id+'_delete').on('click',delete_action);
             if ($.isFunction(ok_action)) $('#'+parent_id+'_ok').on('click',ok_action);
             
-            $('#'+parent_id+'_cancel').on('click',function()
+            $('#'+parent_id+'_delete').on('click',function()
             {
                 $('#'+parent_id+'_inner').remove();
                 $('#'+parent_id+'_outer').remove();
                 $('.focus').removeClass('focus');
                 if(content_id != "") remove_element(content_id);
+                $('.rotated').removeClass('rotated');
             });
+            
             $('#'+parent_id+'_ok').on('click',function()
             {
                 $('#'+parent_id+'_inner').remove();
                 $('#'+parent_id+'_outer').remove();
                 $('.focus').removeClass('focus');
-                
+                $('.rotated').removeClass('rotated');                
             });
             return  parent_id+'_inner';         
 
