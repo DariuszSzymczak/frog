@@ -11,7 +11,7 @@ function Create_div()
   <label for="lg_width">Szerokość ( desktop ) : </label> <input id="div_lg_width" name="div_lg_width" type="number" min="1"  value="1" max="12"  ></input></br> \
   <label for="md_width">Szerokość ( tablet ) : </label> <input id="div_md_width" name="div_md_width" type="number" min="1" value="1" max="12"   ></br> \
   <label for="xs_width">Szerokość ( mobile ) : </label> <input id="div_xs_width" name="div_xs_width" type="number" min="1" value="1" max="12"   ></br>';
-  let div_box = create_box('div_button',target_container,div_accept);
+  let div_box = create_box('div_button',"",div_accept);
   $('#'+div_box).append(tip+inputs1);
 
 
