@@ -1,94 +1,100 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-*{
-  transition:all 1s;
-  font-size:1.2vw ;
+* {
+  transition: all 1s;
+  font-size: 1.2vw;
   font-family: 'Montserrat', sans-serif;
 }
-body{
-background: #eaeaea;
 
-}
-button{
-  cursor:pointer;
+body {
+  background: #eaeaea;
 }
 
-
-
-
-
-#container{
-width: 60%;
-margin: auto;
-margin-top:20%;
-text-align: center;
+button {
+  cursor: pointer;
 }
-#input1{
-width: 45%;
-padding: 2%;
-font-size: 1.2em;
-border: solid 1px #7b0202;
-color: #dbdbdb;
-background: #1e1e1e;
-margin-bottom: 3%;
+
+#container {
+  width: 60%;
+  margin: auto;
+  margin-top: 20%;
+  text-align: center;
 }
-#content
-{
+
+#input1 {
+  width: 45%;
+  padding: 2%;
+  font-size: 1.2em;
+  border: solid 1px #7b0202;
+  color: #dbdbdb;
+  background: #1e1e1e;
+  margin-bottom: 3%;
+}
+
+#content {
   overflow: hidden;
   width: 65vw;
   position: absolute;
   min-height: 2vw;
   left: 30vw;
-  top: 2vw;  
+  top: 2vw;
   background: #fff;
-  -webkit-box-shadow: 1px 1px 20px -1px rgba(15,15,15,1);
-  -moz-box-shadow: 1px 1px 20px -1px rgba(15,15,15,1);
-  box-shadow: 1px 1px 20px -1px rgba(15,15,15,1);
+  -webkit-box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
+  -moz-box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
+  box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
 }
-#content tr{
+
+#content tr {
   width: 100%;
 }
-#content table{
-width: 100%;
-margin: auto;
+
+#content table {
+  width: 100%;
+  margin: auto;
 }
-#content table tr td{
+
+#content table tr td {
   background: #1b1b1b;
   border: 0.2vw solid #090909;
   color: #eaeaea;
 }
-#content table tr th{
-background: #0f8a29;
-border: 0.2vw solid #090909;
-}
-h1,h2{
-color: #bb021c;
-letter-spacing: 5px;
+
+#content table tr th {
+  background: #0f8a29;
+  border: 0.2vw solid #090909;
 }
 
-#hide_menu{
-  position:fixed;
-  left:0.4vw;
-  top:0.4vw;
-  z-index:999;
+h1,
+h2 {
+  color: #bb021c;
+  letter-spacing: 5px;
+}
+
+#hide_menu {
+  position: fixed;
+  left: 0.4vw;
+  top: 0.4vw;
+  z-index: 999;
   font-size: 0.7vw;
 }
-.row{
-  margin:0;
+
+.row {
+  margin: 0;
 }
-#content div div{
+
+#content div div {
   border: 0.05vw solid #a6a6a6;
   padding: 0.5vw 0;
 }
 
-#content *{
+#content * {
   cursor: pointer;
 }
-.active_element{
+
+.active_element {
   border: 0.3vw inset #fe2c2cb3 !important;
 }
 
-#right_menu{
+#right_menu {
   position: fixed;
   width: 4vw;
   height: 0vh;
@@ -100,13 +106,13 @@ letter-spacing: 5px;
   overflow: hidden;
 }
 
-#right_menu img{
+#right_menu img {
   width: 61%;
   margin-bottom: 2vw;
   transition: 1s all;
 }
 
-#right_menu img:hover{
+#right_menu img:hover {
   transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
   -webkit-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
   -moz-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
