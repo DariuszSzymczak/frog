@@ -5,8 +5,9 @@ const port = 5000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  fs.createReadStream('generator.html').pipe(res);
+  res.setHeader('Content-Type', 'text/plain');
+  res.write('dupa');
+  res.end();
 });
 
 server.listen(port, hostname, () => {
