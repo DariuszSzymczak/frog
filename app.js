@@ -54,8 +54,8 @@ http.createServer(function (req, res) {
   });
 
   req.on('data', function (chunk) {
-    
-    res.end("dupa");
+    console.log('GOT DATA!');
+    res.end('callback(\'{\"msg\": \"OK\"}\')');
 });
 
 }).listen(parseInt(port));
