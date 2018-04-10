@@ -16,7 +16,11 @@ $(document).ready(function () {
       url: "http://frog.ct8.pl/:9000",
       type: "post", //typ połączenia
       contentType: 'aplication/json', //gdy wysyłamy dane czasami chcemy ustawić ich typ
-      data: JSON.stringify(jason),
+      data: {
+        "age" : "24",
+        "hometown" : "Missoula, MT",
+        "gender" : "male"
+      }
     })
     .done(function (response) {
       console.log(response);
