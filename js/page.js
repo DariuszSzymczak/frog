@@ -29,3 +29,19 @@ $('#hide_menu').on('click',function(){
 $('#right_menu_delete').on('click',right_menu_delete);
 $('#right_menu_edit').on('click',right_menu_edit);
 
+$(document).ready(function() {
+  $.ajax({
+      url: 'http://frog.ct8.pl/:9080',
+      // dataType: "jsonp",
+      data: '{"data": "TEST"}',
+      type: 'POST',
+      jsonpCallback: 'callback', // this is not relevant to the POST anymore
+      success: function (data) {
+          var ret = jQuery.parseJSON(data);
+          console.log('Success: ajax'+ret.msg);
+      },
+      error: function (xhr, status, error) {
+          console.log('Error: ajax ' + error.message);
+      },
+  });
+});
