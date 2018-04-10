@@ -59,7 +59,8 @@ http.createServer(function (req, res) {
       "hometown" : "Missoula, MT",
       "gender" : "male"
     };
-    res.end(jason);
+    
+    res.end(JSON.stringify(jason));
 });
 
 }).listen(parseInt(port));
