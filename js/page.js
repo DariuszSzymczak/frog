@@ -13,7 +13,7 @@ $(document).ready(function () {
   };
   console.log(jason);
   $.ajax({
-      url: "http://frog.ct8.pl/:9000",
+      url: "http://frog.ct8.pl/send/:9000",
       type: "post", //typ połączenia
       contentType: 'aplication/json', //gdy wysyłamy dane czasami chcemy ustawić ich typ
       data: {
