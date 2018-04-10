@@ -16,7 +16,7 @@ $(document).ready(function () {
       }
     })
     .done(function (response) {
-      console.log('poszlo: '+response);
+      console.log(response);
     })
     .fail(function () {
       console.warn("Wystąpił błąd w połączniu");
