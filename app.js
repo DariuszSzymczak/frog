@@ -17,7 +17,7 @@ app.post('/send', function (req, res) {
     });    
     res.send('Data received:\n' + JSON.stringify(req.body));
 });
-
+app.use('/css',express.static(__dirname + '/css'));
 app.get('/', function(req, res) {
   res.sendFile('generator.html', { root: __dirname });
 });
