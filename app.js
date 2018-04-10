@@ -3,7 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
 
-// var dbConn = mongodb.MongoClient.connect('mongodb://136.243.156.104:27017');
+var dbConn = mongodb.MongoClient.connect('mongodb://136.243.156.104:27017');
 
 var app = express();
 
@@ -12,12 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.post('/send', function (req, res) {
-//     dbConn.then(function(db) {
-//         delete req.body._id; // for safety reasons
-//         db.collection('test').insertOne(req.body);
-//     });    
-    res.send(req.body);
-    //+ JSON.stringify(req.body)
+    dbConn.then(function(db) {
+        delete req.body._id; // for safety reasons
+        db.collection('test').insertOne(req.body);
+    });    
+    res.send(JSON.stringify(req.body));
+
 });
 app.use('/css',express.static(__dirname + '/css'));
 app.use('/js',express.static(__dirname + '/js'));
