@@ -55,7 +55,8 @@ http.createServer(function (req, res) {
 
   req.on('data', function (chunk) {
     console.log('GOT DATA!');
+    res.end('callback(\'{\"msg\": \"OK\"}\')');
 });
-res.end('callback(\'{\"msg\": \"OK\"}\')');
+
 }).listen(parseInt(port));
 console.log(`Server listening on port ${port}`);
