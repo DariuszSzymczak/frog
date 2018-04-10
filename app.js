@@ -7,7 +7,8 @@ var mongodb = require('mongodb');
 
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.post('/send', function (req, res) {
@@ -15,7 +16,7 @@ app.post('/send', function (req, res) {
 //         delete req.body._id; // for safety reasons
 //         db.collection('test').insertOne(req.body);
 //     });    
-    res.send('Data received:\n' );
+    res.send('Data received' );
     //+ JSON.stringify(req.body)
 });
 app.use('/css',express.static(__dirname + '/css'));
