@@ -55,7 +55,7 @@ http.createServer(function (req, res) {
 
   req.on('data', function (chunk) {
    
-    res.end(chunk);
+    res.end("dupa");
 });
 
 }).listen(parseInt(port));
