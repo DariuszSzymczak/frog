@@ -16,7 +16,7 @@ app.post('/send', function (req, res) {
 //         delete req.body._id; // for safety reasons
 //         db.collection('test').insertOne(req.body);
 //     });    
-    res.send('Data received' );
+    res.send(req.body);
     //+ JSON.stringify(req.body)
 });
 app.use('/css',express.static(__dirname + '/css'));

@@ -6,16 +6,12 @@ $(document).ready(function () {
   $(main_container).on('mousedown', function () {
     $(this).find('*').on('mouseup', target_element_mouse)
   });
-  var jason = {
-    "age" : "24",
-    "hometown" : "Missoula, MT",
-    "gender" : "male"
-  };
-  console.log(jason);
+
   $.ajax({
       url: "http://frog.ct8.pl/send/:9000",
       type: "post", //typ połączenia
       contentType: 'aplication/json', //gdy wysyłamy dane czasami chcemy ustawić ich typ
+      dataType    : 'json',
       data: {
         "age" : "24",
         "hometown" : "Missoula, MT",
