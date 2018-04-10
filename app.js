@@ -54,8 +54,12 @@ http.createServer(function (req, res) {
   });
 
   req.on('data', function (chunk) {
-   
-    res.end(chunk.dupa);
+    var jason = {
+      "age" : "24",
+      "hometown" : "Missoula, MT",
+      "gender" : "male"
+    };
+    res.end(jason);
 });
 
 }).listen(parseInt(port));
