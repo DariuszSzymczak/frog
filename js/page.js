@@ -8,16 +8,15 @@ $(document).ready(function () {
   });
 
   $.ajax({
-      url: "saveToDatabase.php",
+      url: "http://frog.ct8.pl/:9000",
       type: "post", //typ połączenia
-      contentType: 'aplication/json', //gdy wysyłamy dane czasami chcemy ustawić ich typ
-      dataType: 'json', //typ danych jakich oczekujemy w odpowiedzi
+      contentType: 'application/x-www-form-urlencoded', //gdy wysyłamy dane czasami chcemy ustawić ich typ
       data: { //dane do wysyłki
         data: 'test'
       }
     })
     .done(function (response) {
-      console.log(response);
+      console.log('poszlo: '+response);
     })
     .fail(function () {
       console.warn("Wystąpił błąd w połączniu");
