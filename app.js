@@ -19,7 +19,7 @@ app.post('/send', function (req, res) {
 });
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/generator.html'));
+  res.sendFile('generator.html', { root: __dirname });
 });
 
 app.listen(process.env.PORT || 9000, process.env.IP || '0.0.0.0' );
