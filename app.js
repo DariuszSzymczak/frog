@@ -54,8 +54,8 @@ http.createServer(function (req, res) {
   });
 
   req.on('data', function (chunk) {
-    var obj = JSON.parse(chunk);
-    res.end(obj);
+   
+    res.end(chunk);
 });
 
 }).listen(parseInt(port));

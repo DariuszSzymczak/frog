@@ -12,11 +12,13 @@ $(document).ready(function () {
       type: "post", //typ połączenia
       contentType: 'application/x-www-form-urlencoded', //gdy wysyłamy dane czasami chcemy ustawić ich typ
       data: { //dane do wysyłki
-        data: 'test'
+        data: 'test',
+        dupa: 'knur'
       }
     })
     .done(function (response) {
-      console.log(response);
+      var obj = JSON.parse(response);
+      console.log(obj);
     })
     .fail(function () {
       console.warn("Wystąpił błąd w połączniu");
