@@ -11,7 +11,6 @@ $(document).ready(function () {
       url: "http://frog.ct8.pl/send/",
       type: "post", //typ połączenia
       contentType: 'aplication/json', //gdy wysyłamy dane czasami chcemy ustawić ich typ
-      dataType    : 'json',
       data: {
         "age" : "24",
         "hometown" : "Missoula, MT",

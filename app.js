@@ -1,9 +1,19 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var mongodb = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+const f = require('util').format;
+const assert = require('assert');
 
-var dbConn = mongodb.MongoClient.connect('mongodb://136.243.156.104:27017');
+const user = encodeURIComponent('mo7636_frog');
+const password = encodeURIComponent('Lewatywa1!');
+const authMechanism = 'DEFAULT';
+
+// Connection URL
+const url = f('mongodb://%s:%s@136.243.156.104:27017/?authMechanism=%s&authSource=mo7636_frog',
+  user, password, authMechanism);
+
+var dbConn = MongoClient.connect(url);
 
 var app = express();
 
@@ -20,8 +30,9 @@ app.post('/send', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         db.collection('test').insert(syn);
+        res.send(JSON.stringify('send correctly'));
     });    
-    res.send(JSON.stringify(req.body));
+    // res.send(JSON.stringify(req.body));
 
 });
 app.use('/css',express.static(__dirname + '/css'));
