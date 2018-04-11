@@ -4,14 +4,7 @@ var bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const f = require('util').format;
 var respond = "ddd";
-MongoClient.connect('mongodb:mo7636_frog:Lewatywa1!@//136.243.156.104:27017/mo7636_frog', function (err, db) {
-    if (err) {
-      respond = " failed connected to the database";
-    } else {
-       respond = "successfully connected to the database";
-    }
-    db.close();
-});
+
 
 var app = express();
 
