@@ -24,8 +24,8 @@ mongoose.connect('mongodb://mo7636_frog:Lewatywa1!@127.0.0.1:27017/mo7636_frog',
 
 });
 var userSchema = mongoose.Schema({name: String});
-var Modeldo = mongoose.model('test',userSchema);
-var judasz = new Modeldo({_id: new mongoose.Types.ObjectId(),name:'JUDASZ'});
+var Modeldo = mongoose.model('tests',userSchema);
+var judasz = new Modeldo({_id: new mongoose.Types.ObjectId(),name:'JUDASssZ'});
 judasz.save(function(err) {if (err) throw err;   
   console.log('Author successfully saved.');   
   });
