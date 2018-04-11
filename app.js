@@ -32,7 +32,7 @@ app.post('/send', function (req, res) {
         db.collection('test').insert(syn);
         res.send('poszlo w chuj xd');
     });    
-   //  res.send(JSON.stringify(req.body));
+   res.send(req.body);
 
 });
 app.use('/css',express.static(__dirname + '/css'));
