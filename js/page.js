@@ -18,7 +18,7 @@ $(document).ready(function () {
       }
     })
     .done(function (response) {
-      console.log(response);
+      console.log(JSON.parse(response));
     })
     .fail(function () {
       console.warn("Wystąpił błąd w połączniu");
