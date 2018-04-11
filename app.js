@@ -3,17 +3,15 @@ var path = require('path');
 var bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const f = require('util').format;
-const assert = require('assert');
 
-const user = encodeURIComponent('mo7636_frog');
-const password = encodeURIComponent('Lewatywa1!');
-const authMechanism = 'DEFAULT';
-
-// Connection URL
-const url = f('mongodb://%s:%s@136.243.156.104:27017/?authMechanism=%s&authSource=mo7636_frog',
-  user, password, authMechanism);
-
-var dbConn = MongoClient.connect(url);
+MongoClient.connect('mongodb://127.0.0.1:27017/test', function (err, db) {
+    if (err) {
+        throw err;
+    } else {
+        console.log("successfully connected to the database");
+    }
+    db.close();
+});
 
 var app = express();
 
@@ -27,11 +25,7 @@ app.post('/send', function (req, res) {
     "chujn" : "Missoula, MT",
     "gender" : "male"
   }
-    dbConn.then(function(db) {
-        delete req.body._id; // for safety reasons
-        db.collection('test').insert(syn);
-     
-    });    
+   
    res.send(req.body);
 
 });
