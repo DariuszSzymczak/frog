@@ -16,15 +16,26 @@ app.post('/send', function (req, res) {
 // app.use('/js',express.static(__dirname + '/js'));
 // app.use('/img',express.static(__dirname + '/img'));
 
-mongoose.connect('mongodb://mo7636_frog:Lewatywa1!@136.243.156.104:27017/mo7636_frog');
-mongoose.model('test',{name: String});
+mongoose.connect('mongodb://mo7636_frog:Lewatywa1!@127.0.0.1:27017/mo7636_frog', function (err) {
+ 
+  if (err) throw err;
 
+  console.log('Successfully connected');
+
+});
+var userSchema = mongoose.Schema({name: String});
+var Modeldo = mongoose.model('test',userSchema);
+var judasz = new Modeldo({_id: new mongoose.Types.ObjectId(),name:'JUDASZ'});
+judasz.save(function(err) {if (err) throw err;   
+  console.log('Author successfully saved.');   
+  });
+  
 app.get('/', function(req, res) {
  // res.sendFile('generator.html', { root: __dirname });
- mongoose.model('test').find(function(err,names)
- {
-    res.send(names);
- });
+ Modeldo.find().exec(function(err, names) {
+  if (err) throw err;   
+  res.send(names);
+});
 });
 
 app.listen(process.env.PORT || 9000, process.env.IP || '0.0.0.0' );
