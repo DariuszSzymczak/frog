@@ -8,10 +8,6 @@ var app = express();
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(path.resolve(__dirname, 'public')));
-
-app.post('/send', function (req, res) {  
-   res.send('ff');
-});
 app.use('/css',express.static(__dirname + '/css'));
 app.use('/js',express.static(__dirname + '/js'));
 app.use('/img',express.static(__dirname + '/img'));
