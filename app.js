@@ -4,14 +4,7 @@ var bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const f = require('util').format;
 
-MongoClient.connect('mongodb://127.0.0.1:27017/test', function (err, db) {
-    if (err) {
-      console.log(" failed connected to the database");
-    } else {
-        console.log("successfully connected to the database");
-    }
-    db.close();
-});
+
 
 var app = express();
 
@@ -20,13 +13,16 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.post('/send', function (req, res) {
-  var syn ={
-    "dupa" : "24",
-    "chujn" : "Missoula, MT",
-    "gender" : "male"
-  }
-   
-   res.send(req.body);
+  var respond = "";
+  MongoClient.connect('mongodb://127.0.0.1:27017', function (err, db) {
+    if (err) {
+      respond = " failed connected to the database";
+    } else {
+       respond = "successfully connected to the database";
+    }
+    db.close();
+});
+   res.send(respond);
 
 });
 app.use('/css',express.static(__dirname + '/css'));
