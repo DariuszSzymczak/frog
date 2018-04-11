@@ -12,11 +12,11 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 app.post('/send', function (req, res) {  
    res.send('ff');
 });
-app.use('/css',express.static(__dirname + '/css'));
-app.use('/js',express.static(__dirname + '/js'));
-app.use('/img',express.static(__dirname + '/img'));
+// app.use('/css',express.static(__dirname + '/css'));
+// app.use('/js',express.static(__dirname + '/js'));
+// app.use('/img',express.static(__dirname + '/img'));
 
-mongoose.connect('mongodb://localhost/mo7636_frog');
+mongoose.connect('mongodb://mo7636_frog:Lewatywa1!@136.243.156.104:27017/mo7636_frog');
 mongoose.model('test',{name: String});
 
 app.get('/', function(req, res) {
