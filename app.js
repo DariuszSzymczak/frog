@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.post('/send', function (req, res) {
-  
+  var respond = "ddd";
   
    res.send(respond);
 
