@@ -14,7 +14,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.post('/send', function (req, res) {
   var respond = "";
-  MongoClient.connect('mongodb://127.0.0.1:27017', function (err, db) {
+  MongoClient.connect('mo7636_frog:Lewatywa1!@mongodb://136.243.156.104:27017/mo7636_frog', function (err, db) {
     if (err) {
       respond = " failed connected to the database";
     } else {
