@@ -6,7 +6,7 @@ const f = require('util').format;
 
 MongoClient.connect('mongodb://127.0.0.1:27017/test', function (err, db) {
     if (err) {
-         throw err;
+      console.log(" failed connected to the database");
     } else {
         console.log("successfully connected to the database");
     }
