@@ -30,7 +30,7 @@ app.post('/send', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         db.collection('test').insert(syn);
-        res.send('poszlo w chuj xd');
+     
     });    
    res.send(req.body);
 
