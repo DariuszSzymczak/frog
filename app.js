@@ -30,9 +30,9 @@ app.post('/send', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         db.collection('test').insert(syn);
-        res.send(JSON.stringify('send correctly'));
+        res.send('poszlo w chuj xd');
     });    
-    // res.send(JSON.stringify(req.body));
+   //  res.send(JSON.stringify(req.body));
 
 });
 app.use('/css',express.static(__dirname + '/css'));
