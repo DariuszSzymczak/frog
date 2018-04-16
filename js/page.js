@@ -67,7 +67,7 @@ $('#info_box_ok').click(function(){
     }
   })
   .done(function (response) {
-    console.log(JSON.parse(response));
+    console.log(response);
   })
   .fail(function () {
     console.warn("Wystąpił błąd w połączniu");
