@@ -40,10 +40,7 @@ app.post('/send', function (req, res) {
   data_to_save.save(function (err) {
     if (err) throw err;
   });
-  Modeldo.find({}, function (err, pages) {
-    pages.forEach(function(page){
-      pages[page._id] = page.name;
-    });
+  pages = Modeldo.find({},'name');
     
   });
   res.send(pages);
