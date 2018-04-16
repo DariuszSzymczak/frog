@@ -31,7 +31,7 @@ var Modeldo = mongoose.model('pages', userSchema);
 //   console.log('Author successfully saved.');   
 //   });
 app.post('/send', function (req, res) {
-  var pages = {};
+  
   let data_to_save = new Modeldo({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
@@ -40,7 +40,7 @@ app.post('/send', function (req, res) {
   data_to_save.save(function (err) {
     if (err) throw err;
   });
-  pages = Modeldo.find({},'name');
+ var pages = Modeldo.find({},'name');
   res.send(pages);
 
 });
