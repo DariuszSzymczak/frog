@@ -60,8 +60,8 @@ $('#info_box_ok').click(function(){
     url: "http://frog.ct8.pl/send/",
     type: "post", //typ połączenia
     data: {
-      "name" : 'dupa',
-      "content" : 'kopald'
+      "name" : name_site,
+      "content" : page_content
     }
   })
   .done(function (response) {
