@@ -19,16 +19,18 @@ mongoose.connect('mongodb://mo7636_frog:Lewatywa1!@127.0.0.1:27017/mo7636_frog',
   console.log('Successfully connected');
 
 });
-var userSchema = mongoose.Schema({name: String});
-var Modeldo = mongoose.model('tests',userSchema);
+var userSchema = mongoose.Schema({name: String,content: String});
+var Modeldo = mongoose.model('pages',userSchema);
 // var judasz = new Modeldo({_id: new mongoose.Types.ObjectId(),name:'JUDASssZ'});
 // judasz.save(function(err) {if (err) throw err;   
 //   console.log('Author successfully saved.');   
 //   });
 app.post('/send', function(req, res) {
-
-    console.log(req.body);      // your JSON
-    res.send(req.body.name);    
+    let data_to_save = new Modeldo({_id: new mongoose.Types.ObjectId(),name:req.body.name,content:req.body.content});
+    data_to_save.save(function(err) {if (err) throw err;   
+      res.send(Modeldo.find());   
+    });
+        
 
  });  
 
