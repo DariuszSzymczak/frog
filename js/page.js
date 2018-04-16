@@ -59,10 +59,10 @@ $('#info_box_ok').click(function(){
   $.ajax({
     url: "http://frog.ct8.pl/send/",
     type: "post", //typ połączenia
-    data:JSON.stringify( {
+    data: {
       "name" : 'dupa',
       "content" : 'kopald'
-    })
+    }
   })
   .done(function (response) {
     console.log(response);
