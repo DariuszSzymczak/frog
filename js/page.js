@@ -60,14 +60,13 @@ $('#info_box_ok').click(function(){
     url: "http://frog.ct8.pl/send/",
     type: "post", //typ połączenia
     contentType: 'aplication/json', //gdy wysyłamy dane czasami chcemy ustawić ich typ
-    dataType: "json",
     data: {
       "name" : name_site,
       "content" : page_content
     }
   })
   .done(function (response) {
-    console.log(JSON.parse(response));
+    console.log(response);
   })
   .fail(function () {
     console.warn("Wystąpił błąd w połączniu");
