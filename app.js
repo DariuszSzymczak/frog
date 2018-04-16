@@ -28,7 +28,7 @@ var Modeldo = mongoose.model('tests',userSchema);
 app.post('/send', function(req, res) {
 
     console.log(req.body);      // your JSON
-    res.send(req.body);    
+    res.send(req.body.name);    
 
  });  
 
