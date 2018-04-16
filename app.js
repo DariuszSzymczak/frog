@@ -40,10 +40,11 @@ app.post('/send', function (req, res) {
   data_to_save.save(function (err) {
     if (err) throw err;
   });
-//  var pages = Modeldo.find({},'name',function (err, athletes) {
-  // if (err) return handleError(err);
-// });
-  res.send(req.body);
+  Modeldo.find({},'name',function (err, pages) {
+  if (err) return handleError(err);
+  res.json(pages);
+});
+  
 
 });
 
