@@ -41,8 +41,6 @@ app.post('/send', function (req, res) {
     if (err) throw err;
   });
   pages = Modeldo.find({},'name');
-    
-  });
   res.send(pages);
 
 });
