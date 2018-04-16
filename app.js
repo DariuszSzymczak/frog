@@ -30,10 +30,10 @@ app.post('/send', function(req, res) {
     let data_to_save = new Modeldo({_id: new mongoose.Types.ObjectId(),name:req.body.name,content:req.body.content});
     data_to_save.save(function(err) {if (err) throw err;       
     });
-    Modeldo.find({}, function (err, page) {
-      pages[page._id] = page.name;
-    });
-    res.send(pages);     
+   // Modeldo.find({}, function (err, page) {
+    //  pages[page._id] = page.name;
+   // });
+    res.send(Modeldo.find({}));     
 
  });  
 
