@@ -26,10 +26,14 @@ var Modeldo = mongoose.model('pages',userSchema);
 //   console.log('Author successfully saved.');   
 //   });
 app.post('/send', function(req, res) {
+    var pages= {};
     let data_to_save = new Modeldo({_id: new mongoose.Types.ObjectId(),name:req.body.name,content:req.body.content});
     data_to_save.save(function(err) {if (err) throw err;       
     });
-    res.send(Modeldo.find());     
+    Modeldo.find({}, function (err, page) {
+      pages[page._id] = page.name;
+    });
+    res.send(pages);     
 
  });  
 
