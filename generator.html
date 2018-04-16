@@ -1,48 +1,69 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<META HTTP-EQUIV="Pragma" content="no-cache">
-		<META NAME="ROBOTS" CONTENT="all">
-		<META HTTP-EQUIV="Content-Language" CONTENT="pl">
-		<META NAME="description" CONTENT="Create your site in few easy steps!">
-		<META NAME="keywords" CONTENT="Jquery,page builder,generator,easy,free,content creator">
-		<META NAME="author" CONTENT="Dariusz Szymczak">
-		<META HTTP-EQUIV="Reply-to" CONTENT="dariusz.szymczak96@gmail.com">
-		<META NAME="revisit-after" CONTENT="2 days">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<TITLE>Jquery Page Builder</TITLE>
 
-		<script>
+<head>
+	<meta charset="UTF-8">
+	<META HTTP-EQUIV="Pragma" content="no-cache">
+	<META NAME="ROBOTS" CONTENT="all">
+	<META HTTP-EQUIV="Content-Language" CONTENT="pl">
+	<META NAME="description" CONTENT="Create your site in few easy steps!">
+	<META NAME="keywords" CONTENT="Jquery,page builder,generator,easy,free,content creator">
+	<META NAME="author" CONTENT="Dariusz Szymczak">
+	<META HTTP-EQUIV="Reply-to" CONTENT="dariusz.szymczak96@gmail.com">
+	<META NAME="revisit-after" CONTENT="2 days">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<TITLE>Jquery Page Builder</TITLE>
+
+	<script>
 		var main_container = '#content'; // id of main container with elements
 		var left_menu = '#left_menu'; //id of left_menu
 		var right_menu = '#right_menu'; //id of right_menu
 		var target_container = 'content'; //focused container by mouse
-		</script>
+	</script>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<link type="text/css" rel="stylesheet" href="css/style.css">
-		<link type="text/css" rel="stylesheet" href="css/menu.css">
-	</head>
-	<body>
-    <div id="container" class="container">
-			<button id="hide_menu" data-hide="0" class="btn btn-success">UKRYJ MENU</button>
-			<div id="left_menu"></div>
-			<div id="right_menu">
-				<image id="right_menu_delete" src='img/x.png'></image>
-				<image id="right_menu_edit" src='img/edit.png'></image>
-				<image id="right_menu_style" src='img/style.png'></image>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	    crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	    crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	    crossorigin="anonymous"></script>
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<link type="text/css" rel="stylesheet" href="css/menu.css">
+</head>
+
+<body>
+	<div id="container" class="container">
+		<div id="blur">
+			<div id="info_box">
+				<span>
+					<button id="info_box_ok">POTWIERDŹ</button>
+					<button id="info_box_cancel">ANULUJ</button>
+				</span>
+				<label for="info_box_input_name">Podaj nazwę dla strony: </label>
+				<input type="text"></input>
 			</div>
-			<div id="content" data-width="" data-left=""></div>
-			<script src="js/functions.js"></script>
-			<script src="js/page.js"></script>
-			<script src="js/Csite.js"></script>
-			<script src="js/Ctablenew.js"></script>
-			<script src="js/Cdiv.js"></script>
-			<script src="js/Cimg.js"></script>
 		</div>
-	</body>
+		<button id="hide_menu" data-hide="0" class="btn btn-success">UKRYJ MENU</button>
+		<div id="left_menu"></div>
+		<div id="right_menu">
+			<image id="right_menu_delete" src='img/x.png'></image>
+			<image id="right_menu_edit" src='img/edit.png'></image>
+			<image id="right_menu_style" src='img/style.png'></image>
+		</div>
+		<div id="content" data-width="" data-left=""></div>
+		<span id="content_buttons">
+			<button id="accept_page">ZAPISZ</button>
+			<button id="restart_page">RESTART</button>
+			<button id="cancel_page">WYJDŹ</button>
+		</span>
+		<script src="js/functions.js"></script>
+		<script src="js/page.js"></script>
+		<script src="js/Csite.js"></script>
+		<script src="js/Ctablenew.js"></script>
+		<script src="js/Cdiv.js"></script>
+		<script src="js/Cimg.js"></script>
+	</div>
+</body>
+
 </html>

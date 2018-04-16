@@ -26,11 +26,10 @@ var Modeldo = mongoose.model('tests',userSchema);
 //   console.log('Author successfully saved.');   
 //   });
 app.post('/send', function(req, res) {
-  res.sendFile('generator.html', { root: __dirname });
-  Modeldo.find().exec(function(err, names) {
-   if (err) throw err;   
-   res.send(names);
- });
+
+    console.log(req.body);      // your JSON
+    response.send(req.body);    // echo the result back
+
  });  
 
 app.get('/', function(req, res) {

@@ -73,7 +73,7 @@ h2 {
   position: fixed;
   left: 0.4vw;
   top: 0.4vw;
-  z-index: 999;
+  z-index: 29;
   font-size: 0.7vw;
 }
 
@@ -118,4 +118,79 @@ h2 {
   -moz-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
   -o-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
   -ms-transform: rotate(357deg) scale(1) skew(1deg) translate(0px);
+}
+
+span#content_buttons button {
+  padding: 0.3vw 4vw;
+  font-size: 1vw;
+  margin: 0;
+}
+
+span#content_buttons {
+  position: fixed;
+  display: none;
+  right: -50vw;
+  bottom: 0;
+  transition: 1s all;
+  margin: 0 -0.2vw !important;
+}
+
+button#accept_page,
+#info_box_ok {
+  background: #0f8a29;
+}
+
+button#restart_page {
+  background: #00490f;
+}
+
+button#cancel_page,
+#info_box_cancel {
+  background: #1b1b1b;
+  color: #eaeaea;
+}
+
+button#accept_page:hover,
+#info_box_ok:hover {
+  background: #56cc6f;
+}
+
+button#restart_page:hover {
+  background: #218235;
+}
+
+button#cancel_page:hover,
+#info_box_cancel:hover {
+  background: #ab2d20;
+  color: #eaeaea;
+}
+
+div#info_box {
+  position: fixed;
+  width: 50vw;
+  padding: 3vw;
+  top: 10vw;
+  left: 26vw;
+  z-index: 99;
+  background: #28a745;
+  text-align: center;
+  
+}
+
+#blur {
+  opacity:0;
+  display:none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 97;
+  background: #000000bf;
+}
+
+div#info_box span {
+  position: absolute;
+  left: 33vw;
+  top: 7.5vw;
 }

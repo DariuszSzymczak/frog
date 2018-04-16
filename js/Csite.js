@@ -114,7 +114,14 @@ function site_accept_create(){
   if ($('#row_ok').length != 0 ) $('#row_ok').click();
   $('#site_inner, #site_outer').hide();
   $('#site_button').attr('data-active',0);
-  if($('.row').length > 0) $(left_menu+' button').removeClass('deactive');
+  if($('.row').length > 0) {
+    $(left_menu+' button').removeClass('deactive');
+    $('#content_buttons').css({display:'block'}).animate({right:'0vw'},200);
+  }
+  if($('.row').length == 0){
+    $('#content_buttons').animate({right:'-50vw'},200).css({display:'none'});
+    $(left_menu+' button').not('#site_button').addClass('deactive');
+  } 
   $(left_menu+' button').trigger('cssClassChanged');
   $('.focus').removeClass('focus');
   target($('#content div div').first().attr('id'));
