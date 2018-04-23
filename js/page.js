@@ -39,6 +39,38 @@ $('#right_menu_edit').on('click', right_menu_edit);
 //click button to acceptpage. Name this site and send JSON to server.
 $('#accept_page').on('click',function(){
   $('#blur').css({'display':'block'}).animate({opacity:'1'},300);
+  var inner_text = '<span> \
+    <button id="info_box_ok">POTWIERDŹ</button> \
+    <button id="info_box_cancel">ANULUJ</button> \
+    </span> \
+    <label for="info_box_input_name">Podaj nazwę dla strony: </label> \
+    <input id="info_box_input_name" type="text"></input> ';
+
+  $('#info_box').html(inner_text);
+  $('#info_box_ok').off();
+
+    //send site in ajax 
+  $('#info_box_ok').click(function(){
+    var name_site = $('#info_box_input_name').val();
+    var page_content = $('#content').html();
+    $.ajax({
+      url: "http://frog.ct8.pl/send/",
+      type: "post", //typ połączenia
+      data: {
+        "name" : name_site,
+        "content" : page_content
+      }
+    })
+    .done(function (response) {
+      console.log(response);
+    })
+    .fail(function () {
+      console.warn("Wystąpił błąd w połączniu");
+    });
+
+    $('#blur').animate({opacity:'0'},300).css({'display':'none'});
+  });
+
 });
 
 
@@ -52,22 +84,3 @@ $('#restart_page').click(function() {
   location.reload();
 });
 
-//send site in ajax 
-$('#info_box_ok').click(function(){
-  var name_site = $('#info_box_input_name').val();
-  var page_content = $('#content').html();
-  $.ajax({
-    url: "http://frog.ct8.pl/send/",
-    type: "post", //typ połączenia
-    data: {
-      "name" : name_site,
-      "content" : page_content
-    }
-  })
-  .done(function (response) {
-    console.log(response);
-  })
-  .fail(function () {
-    console.warn("Wystąpił błąd w połączniu");
-  });
-});

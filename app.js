@@ -26,10 +26,6 @@ var userSchema = mongoose.Schema({
   content: String
 });
 var Modeldo = mongoose.model('pages', userSchema);
-// var judasz = new Modeldo({_id: new mongoose.Types.ObjectId(),name:'JUDASssZ'});
-// judasz.save(function(err) {if (err) throw err;   
-//   console.log('Author successfully saved.');   
-//   });
 app.post('/send', function (req, res) {
   
   let data_to_save = new Modeldo({
