@@ -20,6 +20,7 @@ function Create_img()
     if( name_count != 0) name += name_count;
     else name_count = "";    
     let img = '#' + add_element_to_target(target_container,name+name_count,'img',name_count,'edit_img');
+    $(img).attr('data-name',name);
     $(img).css({"display" : "inline-block"});
     $(img).attr('src',url);
   };      
@@ -28,7 +29,7 @@ function Create_img()
 
 function edit_img()
 {
-  const img_name = target_container;
+  const img_name = $('#'+target_container).attr('data-name');
   const url = $('#'+target_container).attr('src');
   let inputs1 =  '<input type="text" id="img_name" name="img_name" placeholder="nazwa obrazka" value="'+img_name+'"></input> \
   <input type="text" id="img_url" name="img_url" placeholder="adres obrazka" value="'+url+'"></input>';
@@ -44,6 +45,7 @@ function edit_img()
     else name_count = "";
     let parent_id = $('#'+target_container).parent().attr('id');
     let img = '#' + add_element_to_target(parent_id,name+name_count,'img',name_count,'edit_img');
+    $(img).attr('src',url);
     $(img).insertBefore('#'+img_name);
     $('#'+img_name).remove();
     $(img).css({"display" : "inline-block"});

@@ -128,8 +128,8 @@ function site_accept_create(){
 }
 function accept_row(){
   target_container = 'content';
-  $('#site_inner').append('<button id="row_button" class="plus_button">+</button>');
-  $('#row_button').on('click',Crow);
+ $('#site_inner').append('<button id="row_button" class="plus_button">+</button>');
+ $('#row_button').on('click',Crow);
   $('#row_button').show();
   $('#row_inner').remove();
   $('#row_outer').remove();

@@ -81,7 +81,13 @@ function add_button_to_menu(id,name,button_action)
         if ( $('#'+id).hasClass('deactive') == false ) $('#'+arrow_id).css({'opacity':'1'});
         if($('#'+id).hasClass('focus') == true ) $('#'+arrow_id).addClass('rotated');
     }
-    $('#'+id).on('click',button_action);  
+    $('#'+id).on('click',function()
+    {
+
+       if( $('#'+id).hasClass('deactive') == false ) button_action();  
+       else alert('proszę najpierw stworzyć szablon strony');
+    });
+    
     $('#'+id).on('cssClassChanged',animate_arrow);
 }
 
@@ -146,9 +152,11 @@ function create_box(parent_id,content_id,ok_action,delete_action)
 }
 
 
-function create_plus_button(parent_id,action)
+function create_plus_button(parent_id,action,other_class)
 {
-    let plus_button = '<button id="'+parent_id+'_plus_button" class="plus_button">+</button>';
+    let other = "";
+    if (other_class) other = other_class;
+    let plus_button = `<button id="${parent_id}_plus_button${other}" class="plus_button">+</button>`;
     $('#'+parent_id).append(plus_button);
     $('#'+parent_id+'_plus_button').on('click',action);
     return parent_id+'_plus_button';   
@@ -163,6 +171,7 @@ function create_header(parent_id,type,action,text,nr)
     $('#'+parent_id+'_'+type+'_'+number).on('click',action);
     return parent_id+'_'+type+'_'+number;
 }
+
 
 
 //---------------------------------------------------------------------------------------------------------------

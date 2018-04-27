@@ -31,16 +31,16 @@ button {
 }
 
 #content {
-  overflow: hidden;
+  overflow: visible !important;
   width: 65vw;
   position: absolute;
-  min-height: 2vw;
   left: 30vw;
   top: 2vw;
   background: #fff;
   -webkit-box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
   -moz-box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
   box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
+  z-index:10;
 }
 
 #content tr {
@@ -50,6 +50,10 @@ button {
 #content table {
   width: 100%;
   margin: auto;
+}
+
+#content img{
+  width: 100%;
 }
 
 #content table tr td {
@@ -83,7 +87,7 @@ h2 {
 
 #content div div {
   border: 0.05vw solid #a6a6a6;
-  padding: 0.5vw 0;
+  padding: 0;
 }
 
 #content * {
@@ -192,5 +196,64 @@ div#info_box {
 div#info_box span {
   position: absolute;
   left: 33vw;
-  top: 7.5vw;
+  top: 13.5vw;
+}
+
+#info_box_textarea
+{
+  margin-top: 0px;
+  margin-bottom: 1px;
+  height: 8vw;
+  width: 100%;
+
+}
+
+#css_menu_element_input{
+  display:none;
+}
+#css_menu_class_input{
+  display:none;
+}
+.css_menu_img {
+  width: 1.6vw;
+  margin-top: -0.2vw;
+  position: relative;
+  left: -1.4vw;
+}
+
+#css_menu_table {
+  width: 95%;
+  text-align: center;
+  margin-top: 3vw;
+  margin-left: 1.6vw;
+}
+
+#css_menu_table td {
+  text-align: center;
+}
+
+#css_table_button_save {
+  width: 15vw !important;
+  background: #323232 ;
+  position: relative;
+  left: -1vw;
+}
+
+div#css_menu_element_input {
+  margin-top: -3vw;
+}
+
+.active_col_button{
+  display:block;
+  margin:auto;
+}
+
+div#logo_box {
+  margin-top: -19vw;
+  position:absolute;
+  width:29vw;
+  left:49vw;
+}
+#logo_box img{
+  width:100%;
 }

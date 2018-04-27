@@ -39,13 +39,29 @@
 			</div>
 		</div>
 		<button id="hide_menu" data-hide="0" class="btn btn-success">UKRYJ MENU</button>
-		<div id="left_menu"></div>
+
+		<div id="left_menu">
+			<div id="css_menu">
+				<div id="css_menu_exit"><img src="img/x.png"/></div>
+				<span>
+					<button id="css_menu_element" class="css_menu_button">Dodaj do Elementu</button>
+					<div id="css_menu_element_input"></div>
+					<button id="css_menu_class" class="css_menu_button">Dodaj do Klasy</button>
+					<div id="css_menu_class_input">						
+					</div>
+				</span>
+			</div>
+
+		</div>
 		<div id="right_menu">
 			<image id="right_menu_delete" src='img/x.png'></image>
 			<image id="right_menu_edit" src='img/edit.png'></image>
 			<image id="right_menu_style" src='img/style.png'></image>
 		</div>
 		<div id="content" data-width="" data-left=""></div>
+		<div id="logo_box" data-width="29" data-left="49">
+			<img src="img/logo.png"></img>
+		</div>
 		<span id="content_buttons">
 			<button id="accept_page">ZAPISZ</button>
 			<button id="restart_page">RESTART</button>
@@ -54,10 +70,11 @@
 		<script src="js/functions.js"></script>
 		<script src="js/page.js"></script>
 		<script src="js/Csite.js"></script>
-		<script src="js/Ctablenew.js"></script>
+		<script src="js/Ctable.js"></script>
 		<script src="js/Cdiv.js"></script>
 		<script src="js/Cimg.js"></script>
 		<script src="js/Ctext.js"></script>
+		<script src="js/Style_editor.js"></script>
 	</div>
 </body>
 

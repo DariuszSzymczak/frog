@@ -1,22 +1,30 @@
 // set values of elements width in main screen
 $(document).ready(function () {
-
+  // $('#right_menu_style').delay(1000).trigger('click');
   $(main_container).attr('data-width', 65);
   $(main_container).attr('data-left', 30);
   $(main_container).on('mousedown', function () {
     $(this).find('*').on('mouseup', target_element_mouse)
+
   });
 
-  
+
 });
+
 
 // hide and show left menu, set width of content 
 $('#hide_menu').on('click', function () {
   $(left_menu).toggle();
   var main_container_width = $(main_container).attr('data-width');
   var main_container_left = $(main_container).attr('data-left');
+  var logo_width = $('#logo_box').attr('data-width');
+  var logo_left = $('#logo_box').attr('data-left');
   if ($('#hide_menu').attr('data-hide') == 0) {
     $(main_container).css({
+      "width": '100vw',
+      "left": '0vw'
+    });
+    $('#logo_box').css({
       "width": '100vw',
       "left": '0vw'
     });
@@ -26,6 +34,10 @@ $('#hide_menu').on('click', function () {
     $(main_container).css({
       "width": main_container_width + 'vw',
       "left": main_container_left + 'vw'
+    });
+    $('#logo_box').css({
+      "width": logo_width + 'vw',
+      "left": logo_left + 'vw'
     });
     $('#hide_menu').attr('data-hide', 0);
     $('#hide_menu').text('UKRYJ MENU');
@@ -37,8 +49,12 @@ $('#right_menu_delete').on('click', right_menu_delete);
 $('#right_menu_edit').on('click', right_menu_edit);
 
 //click button to acceptpage. Name this site and send JSON to server.
-$('#accept_page').on('click',function(){
-  $('#blur').css({'display':'block'}).animate({opacity:'1'},300);
+$('#accept_page').on('click', function () {
+  $('#blur').css({
+    'display': 'block'
+  }).animate({
+    opacity: '1'
+  }, 300);
   var inner_text = '<span> \
     <button id="info_box_ok">POTWIERDŹ</button> \
     <button id="info_box_cancel">ANULUJ</button> \
@@ -49,38 +65,46 @@ $('#accept_page').on('click',function(){
   $('#info_box').html(inner_text);
   $('#info_box_ok').off();
 
-    //send site in ajax 
-  $('#info_box_ok').click(function(){
+  //send site in ajax 
+  $('#info_box_ok').click(function () {
     var name_site = $('#info_box_input_name').val();
     var page_content = $('#content').html();
     $.ajax({
-      url: "http://frog.ct8.pl/send/",
-      type: "post", //typ połączenia
-      data: {
-        "name" : name_site,
-        "content" : page_content
-      }
-    })
-    .done(function (response) {
-      console.log(response);
-    })
-    .fail(function () {
-      console.warn("Wystąpił błąd w połączniu");
-    });
+        url: "http://frog.ct8.pl/send/",
+        type: "post", //typ połączenia
+        data: {
+          "name": name_site,
+          "content": page_content
+        }
+      })
+      .done(function (response) {
+        console.log(response);
+      })
+      .fail(function () {
+        console.warn("Wystąpił błąd w połączniu");
+      });
 
-    $('#blur').animate({opacity:'0'},300).css({'display':'none'});
+    $('#blur').animate({
+      opacity: '0'
+    }, 300).css({
+      'display': 'none'
+    });
   });
 
 });
 
 
 //cancel save page
-$('#info_box_cancel').on('click',function(){
-  $('#blur').animate({opacity:'0'},300).css({'display':'none'});
+$('#info_box_cancel').on('click', function () {
+  $('#blur').animate({
+    opacity: '0'
+  }, 300).css({
+    'display': 'none'
+  });
 });
 
 //reload site
-$('#restart_page').click(function() {
+$('#restart_page').click(function () {
   location.reload();
 });
 
