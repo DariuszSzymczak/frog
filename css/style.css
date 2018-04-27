@@ -249,11 +249,26 @@ div#css_menu_element_input {
 }
 
 div#logo_box {
-  margin-top: -19vw;
+  margin-top: -13vw;
   position:absolute;
   width:29vw;
-  left:49vw;
+  left:48.1vw;
 }
 #logo_box img{
   width:100%;
+}
+#blur2{
+  z-index:12;
+  background:rgba(0, 0, 0, 0.788235294117647);
+  position:fixed;
+  left:0;
+  top:0;
+  width:100vw;
+  height:100vh;
+  display:none;
+}
+#blur2 img{
+  left: 25vw;
+    position: fixed;
+
 }

@@ -91,7 +91,11 @@ function Ccol(){
      class="col-lg-'+large+' col-md-'+tablet+' col-xs-'+mobile+'" \
      ></div>');
      $('#'+col_id).append('<button id="'+col_id+'_plus_button" class="active_col_button plus_button">+</div>');
-     $('#'+col_id+'_plus_button').on('click',function(){if( $('.table_outer:visible').length == 0) setTimeout(target(col_id),500)});
+     $('#'+col_id+'_plus_button').on('click',function(){
+       if( $('.table_outer:visible').length == 0) setTimeout(target(col_id),500);
+        $('#blur2').fadeIn();
+        $('*').one('mouseup',function(){$('#blur2').fadeOut();})
+    });
     $('#col_inner').remove();
     $('#col_outer').remove();
     $('#row_outer').show();
