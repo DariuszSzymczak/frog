@@ -20,6 +20,7 @@ function addmenu_getPages(){
       .fail(function () {
         console.warn("Wystąpił błąd w połączniu");
         res = false;
+        return res;
       });
       
 }
