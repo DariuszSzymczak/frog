@@ -23,18 +23,17 @@ function createMenu(){
           "name": "getPages"
         }
       })
-      .done(function (response) {
-        console.log(response);
-        console.log(response[0].name);
+      .done(function (page_list) {
+        for(let x=0;x<page_list.length;x++){
+            console.log('dodaje: '+page_list[x].name);
+            $('#addmenu_input_select').append(`<option>${page_list[x].name}</option>`);
+        } 
       })
       .fail(function () {
         console.warn("Wystąpił błąd w połączniu");
       });
 
-//  for(let x=0;x<page_list.length;x++){
-//             console.log('dodaje: '+page_list[x].name);
-//             $('#addmenu_input_select').append(`<option>${page_list[x].name}</option>`);
-//         } 
+
 
 
     
