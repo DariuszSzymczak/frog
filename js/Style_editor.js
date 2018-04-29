@@ -24,6 +24,7 @@ function css_edit_table(arg) {
 
     var table_start = '<table  id="css_menu_table"></table>';
 
+    // generate left_menu box for class editor
     if (arg == "classmode") {
         $('#css_menu_element_input').html('');
         const css_input_name = '</br><h3>Wpisz nazwę Klasy</h3><input type="text" id="css_input_name"></input>';
@@ -36,6 +37,7 @@ function css_edit_table(arg) {
 
         $('#css_table_button_save').on('click',css_class_save_style);
 
+    //generate left_menu editor for element
     } else {
         $('#css_menu_class_input').html('');
         $('#css_menu_element_input').html(table_start);
@@ -49,6 +51,7 @@ function css_edit_table(arg) {
         $('#css_table_button_save').on('click',css_save_style);
     }
 
+    // create boxes in left_menu to add some <tr> in the css table
     function css_add_tr(text) {
         if(!text) text='';
         let count_tr = $('#css_menu_table tr').length;
@@ -60,6 +63,7 @@ function css_edit_table(arg) {
         
     }
 
+    //delete <tr>
     function css_delete_tr() {
         $(this).parent().remove();
     }
@@ -178,14 +182,14 @@ function css_edit_table(arg) {
         $('#'+target_container).attr('style',css_element_all_styles(target_container))
     }
 
-    function css_exit(){
-      $('#css_menu_element_input').hide();
-      $('#css_menu_class_input').hide();
-      $(left_menu + ' *').removeClass('hide');
-      $('#css_menu').hide();   
-    }
 
     $('#css_menu_exit').on('click',css_exit);
 
     $('#css_input_name').keyup(css_class_styles);
 }
+function css_exit(){
+    $('#css_menu_element_input').hide();
+    $('#css_menu_class_input').hide();
+    $(left_menu + ' *').removeClass('hide');
+    $('#css_menu').hide();   
+  }

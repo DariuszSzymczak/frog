@@ -21,6 +21,11 @@ function Create_textarea()
       $('#'+target_container).append($('#info_box_textarea').val());
       $('#blur').animate({opacity:'0'},300).css({'display':'none'});
     });  
+    //cancel save page
+$('#info_box_cancel').on('click', function () {
+  $('#blur').animate({opacity: '0'}, 300).css({'display': 'none'});
+});
+
 }
 
 function edit_text()

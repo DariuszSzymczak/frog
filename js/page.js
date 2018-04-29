@@ -5,7 +5,7 @@ $(document).ready(function () {
   $(main_container).attr('data-left', 30);
   $(main_container).on('mousedown', function () {
     $(this).find('*').on('mouseup', target_element_mouse)
-
+    $('#css_menu_exit').on('click',css_exit);
   });
 
 
@@ -64,6 +64,15 @@ $('#accept_page').on('click', function () {
 
   $('#info_box').html(inner_text);
   $('#info_box_ok').off();
+//cancel save page
+$('#info_box_cancel').click(function () {
+  console.log('kliklo kurwa!');
+  $('#blur').animate({
+    opacity: '0'
+  }, 300).css({
+    'display': 'none'
+  });
+});
 
   //send site in ajax 
   $('#info_box_ok').click(function () {
@@ -94,14 +103,6 @@ $('#accept_page').on('click', function () {
 });
 
 
-//cancel save page
-$('#info_box_cancel').on('click', function () {
-  $('#blur').animate({
-    opacity: '0'
-  }, 300).css({
-    'display': 'none'
-  });
-});
 
 //reload site
 $('#restart_page').click(function () {
