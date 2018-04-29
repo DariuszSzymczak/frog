@@ -24,7 +24,7 @@ function createMenu(){
         }
       })
       .done(function (response) {
-        page_list = response;
+        console.log(response.name);
       })
       .fail(function () {
         console.warn("Wystąpił błąd w połączniu");
