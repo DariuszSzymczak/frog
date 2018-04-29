@@ -40,6 +40,13 @@ app.post('/send', function (req, res) {
   if (err) return handleError(err);
   res.json(pages);
 });
+
+app.post('/pages', function (req, res) {
+  
+  Modeldo.find({},'name',function (err, pages) {
+  if (err) return handleError(err);
+  res.json(pages);
+});
   
 
 });
