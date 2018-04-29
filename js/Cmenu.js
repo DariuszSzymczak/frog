@@ -24,16 +24,17 @@ function createMenu(){
         }
       })
       .done(function (response) {
-        console.log(response.name);
+        console.log(response);
+        console.log(response[0].name);
       })
       .fail(function () {
         console.warn("Wystąpił błąd w połączniu");
       });
 
- for(let x=0;x<page_list.length;x++){
-            console.log('dodaje: '+page_list[x].name);
-            $('#addmenu_input_select').append(`<option>${page_list[x].name}</option>`);
-        } 
+//  for(let x=0;x<page_list.length;x++){
+//             console.log('dodaje: '+page_list[x].name);
+//             $('#addmenu_input_select').append(`<option>${page_list[x].name}</option>`);
+//         } 
 
 
     
