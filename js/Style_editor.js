@@ -55,7 +55,7 @@ function css_edit_table(arg) {
     function css_add_tr(text) {
         if(!text) text='';
         let count_tr = $('#css_menu_table tr').length;
-        if ($('#css_table_button_save').length == 0) $('#css_menu_table').append('<tr id="css_table_save"><td colspan="2"><button id="css_table_button_save">Zapisz Styl</button></td></tr>');
+        if ($('#css_table_button_save').length == 0) $('#css_menu_table').append('<tr id="css_table_save"><td colspan="2"><button id="css_table_button_save" class="menu_long_button">Zapisz Styl</button></td></tr>');
         $('#css_table_save').before(`<tr data-nr=${count_tr}>\
         <td data-type="value"><input type="text" placeholder="atrybut : wartość" value='${text}'></input></td><td class="css_menu_delete">\
         <img src="img/x.png"/ class="css_menu_img"></td></tr>`);
@@ -183,7 +183,7 @@ function css_edit_table(arg) {
     }
 
 
-    $('#css_menu_exit').on('click',css_exit);
+    
 
     $('#css_input_name').keyup(css_class_styles);
 }

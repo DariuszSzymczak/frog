@@ -232,7 +232,7 @@ div#info_box span {
   text-align: center;
 }
 
-#css_table_button_save {
+.menu_long_button {
   width: 15vw !important;
   background: #323232 ;
   position: relative;

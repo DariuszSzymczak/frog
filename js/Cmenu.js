@@ -11,11 +11,11 @@ function addmenu_getPages(){
 
 function createMenu(){
     let box = create_box('addmenu_button','','','');
-    let name_input = `<input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu'></input>`;
-    let select_input='<select id ="addmenu_input_select"></select>';
+    let name_input = `<input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu'></input></br>`;
+    let select_input='<label>Wybierz Stronę </label><select id ="addmenu_input_select"></select>';
     let page_list = addmenu_getPages();
     $('#'+box).append(name_input+select_input);
-
+    $('#'+box).append('<button id="addmenu_create_button class="menu_long_button">Stwórz Menu</button>');
     $.ajax({
         url: "http://frog.ct8.pl/pages/",
         type: "post", //typ połączenia
