@@ -27,6 +27,7 @@ function createMenu(){
           })
           .done(function (response) {
             res = response;
+            console.log(res);
           })
           .fail(function () {
             console.warn("Wystąpił błąd w połączniu");
