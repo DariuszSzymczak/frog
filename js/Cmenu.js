@@ -15,12 +15,13 @@ function addmenu_getPages(){
       .done(function (response) {
         res = response;
         console.log(res);
+        return res;
       })
       .fail(function () {
         console.warn("Wystąpił błąd w połączniu");
         res = false;
       });
-      return res;
+      
 }
 
 function createMenu(){
