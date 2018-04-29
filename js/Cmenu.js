@@ -22,7 +22,7 @@ function createMenu(){
             url: "http://frog.ct8.pl/pages/",
             type: "post", //typ połączenia
             data: {
-              "name": name_site
+              "name": "getPages"
             }
           })
           .done(function (response) {
