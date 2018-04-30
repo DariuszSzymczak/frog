@@ -16,7 +16,7 @@ function createMenu() {
     <table id="addmenu_table"></table></div>';
   let page_list = addmenu_getPages();
   $('#' + box).append(name_input + select_input);
-  $('#addmenu_table').after('<button id="addmenu_table_button_down" class="menu_long_button2">+</button>'); 
+  $('#addmenu_table').append('<tr><td colspan="4"><button id="addmenu_table_button_down" class="menu_long_button2">+</button></td></tr>'); 
   $('#' + box).append('<button id="addmenu_create_button" class="menu_long_button2">Stwórz Menu</button>');
   $.ajax({
       url: "http://frog.ct8.pl/pages/",
@@ -42,18 +42,19 @@ function createMenu() {
   });
 
   function addTr(direction) {
-    let tr = `<tr><td>${$('#addmenu_input_select').val()}</td><td class="css_menu_delete">\
+    let tr = `<tr><td colspan='3'>${$('#addmenu_input_select').val()}</td><td colspan='1'class="addmenu_delete">\
     <img src="img/x.png"/ class="css_menu_img"></td></tr>`;
-    if(direction == 'up') $('#addmenu_table').prepend(tr);
-    else $('#addmenu_table').append(tr);
-    $('.css_menu_delete').on('click',function(){$(this).parent().remove()});
+    if(direction == true) $('#addmenu_table_button_down').after(tr);
+    else $('#addmenu_table_button_up').before(tr);
+    $('.addmenu_delete').on('click',function(){$(this).parent().remove()});
   }
 
   $('#addmenu_table_button_down').click(function(){
     if($('#addmenu_table_button_up').length == 0 ){
-      $('#addmenu_table').before('<button id="addmenu_table_button_up2" class="menu_long_button">+</button>');
-      $('#addmenu_table_button_up').click(addTr('up'));  
-    } else addTr('');
+      $('#addmenu_table').prepend('<tr><td colspan="4"><button id="addmenu_table_button_up" class="menu_long_button2">+</button></td></tr>');
+      $('#addmenu_table_button_up').click(function(){addTr(true)});  
+    } 
+    addTr('');
   });
 
 
