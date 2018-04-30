@@ -44,8 +44,8 @@ function createMenu() {
   function addTr(direction) {
     let tr = `<tr><td colspan='3'>${$('#addmenu_input_select').val()}</td><td colspan='1'class="addmenu_delete">\
     <img src="img/x.png"/ class="css_menu_img"></td></tr>`;
-    if(direction == true) $('#addmenu_table_button_down').after(tr);
-    else $('#addmenu_table_button_up').before(tr);
+    if(direction == true) $('#addmenu_table_button_down').parent().parent().after(tr);
+    else $('#addmenu_table_button_up').parent().parent().before(tr);
     $('.addmenu_delete').on('click',function(){$(this).parent().remove()});
   }
 
