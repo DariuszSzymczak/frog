@@ -270,5 +270,20 @@ div#logo_box {
 #blur2 img{
   left: 25vw;
     position: fixed;
+  }
 
-}
+  #addmenu_table{
+    width: 100%;
+    background: #0f8a29;
+  }
+  #addmenu_table tr td{
+    border: 0.2vw solid black;
+  }
+
+  .menu_long_button2{
+    background: rgba(0, 0, 0, 0.31);
+    font-size: 1.2vw;
+  }
+  .menu_long_button2:hover{
+    background: #28a745;
+  }
