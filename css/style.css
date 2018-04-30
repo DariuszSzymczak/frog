@@ -274,7 +274,7 @@ div#logo_box {
 
   #addmenu_table{
     width: 100%;
-    background: #0f8a29;
+    color: #eaeaea;
   }
   #addmenu_table tr td{
     border: 0.2vw solid black;
@@ -283,9 +283,10 @@ div#logo_box {
   .menu_long_button2{
     background: rgba(0, 0, 0, 0.31) !important;
     font-size: 1.2vw !important;
+    background: #0f8a29 !important;
   }
   .menu_long_button2:hover{
-    background: #28a745;
+    background: #40ff68 !important;
   }
 
   .addmenu_img{
