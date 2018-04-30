@@ -281,9 +281,14 @@ div#logo_box {
   }
 
   .menu_long_button2{
-    background: rgba(0, 0, 0, 0.31);
-    font-size: 1.2vw;
+    background: rgba(0, 0, 0, 0.31) !important;
+    font-size: 1.2vw !important;
   }
   .menu_long_button2:hover{
     background: #28a745;
+  }
+
+  .addmenu_img{
+    margin-left: 40%;
+    background:#1a1a1a;
   }
