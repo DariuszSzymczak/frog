@@ -10,7 +10,7 @@ function addmenu_getPages() {
 
 function createMenu() {
   let menu_ID;
-  let box = create_box('addmenu_button', '', '', '');
+  let box = create_box('addmenu_button', '', '',deleteMenu);
   let name_input = `<input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu' style="margin-bottom: 1vw"></input></br>\
   <label for="addmenu_fixed">Przyklejone Menu: </label><input type="checkbox" name="addmenu_fixed" id="addmenu_fixed"></input></br>`;
   let select_input = '<div id="addmenu_selects" style="display:none" >\
@@ -82,4 +82,8 @@ function createMenu() {
 
 function editMenu(){
 
+}
+
+function deleteMenu(){
+  $(target_container).remove();
 }

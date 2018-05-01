@@ -301,6 +301,6 @@ div#logo_box {
     margin-right:2vw;
   }
   .fixed-top {
-    width: 65vw;
-    left: 30vw;
+    width: 65vw !important;
+    left: 30vw !important;
 }
