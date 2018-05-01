@@ -50,34 +50,34 @@ function createMenu() {
         
         });
 
+        function addTr(direction) {
+          var name =  $('#addmenu_input_select').val();
+          let link = `<li id="${menu_ID}_li_${name}" class="nav-item" data-name="${name}"><a class="nav-link" href="#${name}_content">${name}</a></li>`;
+          let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addmenu_delete" data-name="${name}">\
+          <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
+          if(direction == true) {
+            $('#addmenu_table_button_up').parent().parent().after(tr); 
+            $(`#${menu_ID}_ul`).prepend(link);
+          }
+          else{
+              $('#addmenu_table_button_down').parent().parent().before(tr);   
+              $(`#${menu_ID}_ul`).append(link);
+          }
+          $('.addmenu_delete').on('click',function(){
+            $(this).parent().remove();
+            $(`#${menu_ID}_li_${name}`).remove();
+          });
+        }
+      
+        $('#addmenu_table_button_down').click(function(){
+          if($('#addmenu_table_button_up').length == 0 ){
+            $('#addmenu_table').prepend('<tr><td colspan="5"><button id="addmenu_table_button_up" class="menu_long_button2">+</button></td></tr>');
+            $('#addmenu_table_button_up').click(function(){addTr(true)});  
+          } 
+          addTr('');
+        });
   });
 
-  function addTr(direction) {
-    var name =  $('#addmenu_input_select').val();
-    let link = `<li id="${menu_ID}_li_${name}" class="nav-item" data-name="${name}"><a class="nav-link" href="#${name}_content">${name}</a></li>`;
-    let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addmenu_delete" data-name="${name}">\
-    <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
-    if(direction == true) {
-      $('#addmenu_table_button_up').parent().parent().after(tr); 
-      $(`#${menu_ID}_ul`).prepend(link);
-    }
-    else{
-        $('#addmenu_table_button_down').parent().parent().before(tr);   
-        $(`#${menu_ID}_ul`).append(link);
-    }
-    $('.addmenu_delete').on('click',function(){
-      $(this).parent().remove();
-      $(`#${menu_ID}_li_${name}`).remove();
-    });
-  }
-
-  $('#addmenu_table_button_down').click(function(){
-    if($('#addmenu_table_button_up').length == 0 ){
-      $('#addmenu_table').prepend('<tr><td colspan="5"><button id="addmenu_table_button_up" class="menu_long_button2">+</button></td></tr>');
-      $('#addmenu_table_button_up').click(function(){addTr(true)});  
-    } 
-    addTr('');
-  });
 
 
 }
