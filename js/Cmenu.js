@@ -9,6 +9,7 @@ function addmenu_getPages() {
 }
 
 function createMenu() {
+  let menu_ID;
   let box = create_box('addmenu_button', '', '', '');
   let name_input = `<input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu' style="margin-bottom: 1vw"></input></br>`;
   let select_input = '<div id="addmenu_selects" style="display:none" >\
@@ -39,7 +40,7 @@ function createMenu() {
     $('#addmenu_input_name').fadeOut();
     $(this).fadeOut();
     $('#addmenu_selects').fadeIn();
-    let menu_ID = add_element_to_target(target_container,'nav','nav',-1,'editMenu');
+     menu_ID = add_element_to_target(target_container,'nav','nav',-1,'editMenu');
     $('#'+menu_ID).addClass('navbar navbar-dark bg-dark');
     $('#'+menu_ID).append(`<ul id="${menu_ID}_ul" class="navbar-nav mr-auto"></ul>`);
     
