@@ -297,7 +297,7 @@ div#logo_box {
   .navbar-nav{
     flex-direction: row !important;    
   }
-  .navbar-link{
+  .nav-link{
     margin-right:2vw;
   }
   .fixed-top {
