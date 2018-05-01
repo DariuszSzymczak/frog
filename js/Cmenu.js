@@ -38,10 +38,11 @@ function createMenu() {
     });
 
   $('#addmenu_create_button').on('click', function () {
+    let name_val=$('#addmenu_input_name').val();
     $('#addmenu_input_name').fadeOut();
     $(this).fadeOut();
     $('#addmenu_selects').fadeIn();
-     menu_ID = add_element_to_target(target_container,'nav','nav',-1,'editMenu');
+     menu_ID = add_element_to_target(target_container,name_val,'nav',-1,'editMenu');
     $('#'+menu_ID).addClass('navbar navbar-dark bg-dark');  
     if($('#addmenu_fixed:checked').length == 1) $('#'+menu_ID).addClass('fixed-top');
     $('#'+menu_ID).append(`<ul id="${menu_ID}_ul" class="navbar-nav mr-auto"></ul>`);
@@ -50,7 +51,7 @@ function createMenu() {
   });
 
   function addTr(direction) {
-    var name = 'menu_'+ $('#addmenu_input_select').val();
+    var name =  $('#addmenu_input_select').val();
     let link = `<li id="${menu_ID}_li_${name}" class="nav-item"><a class="nav-link" href="#${name}_content">${name}</a></li>`;
     let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addmenu_delete" data-name="${name}">\
     <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
