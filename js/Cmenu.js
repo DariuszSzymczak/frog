@@ -49,19 +49,20 @@ function createMenu() {
 
   function addTr(direction) {
     var name = $('#addmenu_input_select').val();
+    let link = `<li id="${menu_ID}_li_${name}" class="nav-item"><a class="nav-link" href="#${name}_content">${name}</a></li>`;
     let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addmenu_delete" data-name="${name}">\
     <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
     if(direction == true) {
       $('#addmenu_table_button_up').parent().parent().after(tr); 
-      $(`#${menu_ID}_ul`).append(`<a class="nav-link" href="#${name}_content">${name}</a>`);
+      $(`#${menu_ID}_ul`).prepend(link);
     }
     else{
         $('#addmenu_table_button_down').parent().parent().before(tr);   
-        $(`#${menu_ID}_ul`).prepend(`<a class="nav-link" href="#${name}_content">${name}</a>`);
+        $(`#${menu_ID}_ul`).append(link);
     }
     $('.addmenu_delete').on('click',function(){
       $(this).parent().remove();
-      $(`#${name}_content`).remove();
+      $(`#${menu_ID}_li_${name}`).remove();
     });
   }
 
