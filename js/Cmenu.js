@@ -39,14 +39,29 @@ function createMenu() {
     $('#addmenu_input_name').fadeOut();
     $(this).fadeOut();
     $('#addmenu_selects').fadeIn();
+    let menu_ID = add_element_to_target(target_container,'nav','nav',-1,'editMenu');
+    $('#'+menu_ID).addClass('navbar navbar-dark bg-dark');
+    $('#'+menu_ID).append(`<ul id="${menu_ID}_ul" class="navbar-nav mr-auto"></ul>`);
+    
+
   });
 
   function addTr(direction) {
-    let tr = `<tr><td colspan='4'>${$('#addmenu_input_select').val()}</td><td colspan='1'class="addmenu_delete">\
+    var name = $('#addmenu_input_select').val();
+    let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addmenu_delete" data-name="${name}">\
     <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
-    if(direction == true) $('#addmenu_table_button_up').parent().parent().after(tr); 
-    else  $('#addmenu_table_button_down').parent().parent().before(tr);   
-    $('.addmenu_delete').on('click',function(){$(this).parent().remove()});
+    if(direction == true) {
+      $('#addmenu_table_button_up').parent().parent().after(tr); 
+      $(`#${menu_ID}_ul`).append(`<a class="nav-link" href="#${name}_content">${name}</a>`);
+    }
+    else{
+        $('#addmenu_table_button_down').parent().parent().before(tr);   
+        $(`#${menu_ID}_ul`).prepend(`<a class="nav-link" href="#${name}_content">${name}</a>`);
+    }
+    $('.addmenu_delete').on('click',function(){
+      $(this).parent().remove();
+      $(`#${name}_content`).remove();
+    });
   }
 
   $('#addmenu_table_button_down').click(function(){
@@ -57,5 +72,9 @@ function createMenu() {
     addTr('');
   });
 
+
+}
+
+function editMenu(){
 
 }
