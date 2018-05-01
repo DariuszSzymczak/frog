@@ -11,7 +11,8 @@ function addmenu_getPages() {
 function createMenu() {
   let menu_ID;
   let box = create_box('addmenu_button', '', '', '');
-  let name_input = `<input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu' style="margin-bottom: 1vw"></input></br>`;
+  let name_input = `<input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu' style="margin-bottom: 1vw"></input></br>\
+  <label for="addmenu_fixed">Przyklejone Menu: </label><input type="checkbox" name="addmenu_fixed" id="addmenu_fixed"></input></br>`;
   let select_input = '<div id="addmenu_selects" style="display:none" >\
     <label>Wybierz Stronę </label><select id ="addmenu_input_select"></select>\
     <table id="addmenu_table"></table></div>';
@@ -41,14 +42,15 @@ function createMenu() {
     $(this).fadeOut();
     $('#addmenu_selects').fadeIn();
      menu_ID = add_element_to_target(target_container,'nav','nav',-1,'editMenu');
-    $('#'+menu_ID).addClass('navbar navbar-dark bg-dark');
+    $('#'+menu_ID).addClass('navbar navbar-dark bg-dark');  
+    if($('#addmenu_fixed:checked').length == 1) $('#'+menu_ID).addClass('fixed-top');
     $('#'+menu_ID).append(`<ul id="${menu_ID}_ul" class="navbar-nav mr-auto"></ul>`);
     
 
   });
 
   function addTr(direction) {
-    var name = $('#addmenu_input_select').val();
+    var name = 'menu_'+ $('#addmenu_input_select').val();
     let link = `<li id="${menu_ID}_li_${name}" class="nav-item"><a class="nav-link" href="#${name}_content">${name}</a></li>`;
     let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addmenu_delete" data-name="${name}">\
     <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;

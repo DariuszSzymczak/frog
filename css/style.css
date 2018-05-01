@@ -293,3 +293,10 @@ div#logo_box {
     margin-left: 40%;
     background:#1a1a1a;
   }
+
+  .navbar-nav{
+    flex-direction: row !important;    
+  }
+  .navbar-link{
+    margin-right:2vw;
+  }
