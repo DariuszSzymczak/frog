@@ -88,13 +88,22 @@ let menu_ID = target_container;
 //set name of menu
 $('#addmenu_input_name').val($('#'+target_container).attr('data-name'));
 
+//add up plus button 
+$('#addmenu_table').prepend('<tr><td colspan="5"><button id="addmenu_table_button_up" class="menu_long_button2">+</button></td></tr>');
+
 //get items from target menu
 $('#'+target_container).find('.nav-item').each(function(){
   let name = $(this).attr('data-name');
   let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addmenu_delete" data-name="${name}">\
   <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
+  
   $('#addmenu_table_button_down').parent().parent().before(tr);
-  console.log('name: '+ name);
+
+  //delete menu element on click X
+  $('.addmenu_delete').on('click',function(){
+    $(this).parent().remove();
+    $(`#${menu_ID}_li_${name}`).remove();
+  });
 });
 }
 
