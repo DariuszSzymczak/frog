@@ -10,7 +10,7 @@ function target_element_mouse()
         id = $(this).attr('id');
         if($('.focus').length == 0) target(id);
         parent_id = $(this).parent().attr('id');
-        $(main_container+' *:not(.plus_button)').off();
+        $('#content *:not(.plus_button)').off();
     }
 }
 
@@ -18,7 +18,7 @@ function target_element_mouse()
 function target(string1)
 {
   target_container = string1;
-  $(main_container).find('.active_element').removeClass('active_element');
+  $('#content').find('.active_element').removeClass('active_element');
   $('#'+string1).addClass('active_element'); 
   setTimeout(function(){right_menu_show(string1)},1000);
 }

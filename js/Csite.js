@@ -87,7 +87,7 @@ function Ccol(){
     let large = $('#lg_width').val();
     let tablet = $('#md_width').val();
     let mobile = $('#xs_width').val();
-    $('#'+target_container).append('<div id="'+col_id+'" data-lg="'+large+'" data-md="'+tablet+'" data-xs="'+mobile+'"\
+    $('#'+target_container).append('<div id="'+col_id+'"  data-type="col" data-lg="'+large+'" data-md="'+tablet+'" data-xs="'+mobile+'"\
      class="col-lg-'+large+' col-md-'+tablet+' col-xs-'+mobile+'" \
      ></div>');
      $('#'+col_id).append('<button id="'+col_id+'_plus_button" class="active_col_button plus_button">+</div>');
@@ -128,10 +128,10 @@ function site_accept_create(){
   } 
   $(left_menu+' button').trigger('cssClassChanged');
   $('.focus').removeClass('focus');
-  target($('#content div div').first().attr('id'));
+  target($(`#${main_container}`).find('div[data-type="col"]').first().attr('id'));
 }
 function accept_row(){
-  target_container = 'content';
+  target_container = main_container;
  $('#site_inner').append('<button id="row_button" class="plus_button">+</button>');
  $('#row_button').on('click',Crow);
   $('#row_button').show();
@@ -147,7 +147,7 @@ function cancel_row(){
   $('#row_button').show();
   $('#row_inner').remove();
   $('#row_outer').remove();
-  target_container = 'content';
+  target_container = main_container;
 }
 function cancel_col(){
   $('#col_inner').remove();
@@ -162,7 +162,7 @@ function show_row(){
     $('#row_button').remove();
     let row = $(this).attr('data-nr');
     let row_id = '#'+target_container+'_row'+row;
-    let col_list = $(row_id+' div');
+    let col_list = $(row_id+' div[data-type="col"]');
     target_container =target_container+'_row'+row;
     let row_outer ='<span id="row_outer" class="table_outer"  ><button id="row_cancel" class="cancel_button">X</button><button id="row_ok" class="ok_button" >OK</button></span>';
     let col_button= '<button id="col_button" class="plus_button">+</button>';
@@ -207,7 +207,7 @@ function show_col()
       let lg = $('#lg_width').val();
       let md = $('#md_width').val();
       let xs = $('#xs_width').val();
-      $('#'+col_id).replaceWith('<div id="'+col_id+'" data-lg="'+lg+'" data-md="'+md+'" data-xs="'+xs+'"\
+      $('#'+col_id).replaceWith('<div id="'+col_id+'" data-type="col" data-lg="'+lg+'" data-md="'+md+'" data-xs="'+xs+'"\
       class="col-lg-'+lg+' col-md-'+md+' col-xs-'+xs+'" \
       >'+data+'</div>');
       $('#'+col_id+'_plus_button').on('click',function(){if( $('.table_outer:visible').length == 0) setTimeout(target(col_id),500)});
