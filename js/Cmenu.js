@@ -40,6 +40,7 @@ function createMenu() {
       $('#addmenu_create_button').on('click', function () {
         let name_val=$('#addmenu_input_name').val();
         $('#addmenu_input_name').fadeOut();
+        $('#addmenu_fixed').fadeOut();
         $(this).fadeOut();
         $('#addmenu_selects').fadeIn();
         menu_ID = add_element_to_target(target_container,name_val,'nav',-1,'editMenu');
@@ -85,6 +86,12 @@ function createMenu() {
 function editMenu(){
 createMenu();
 let menu_ID = target_container;
+
+//hide first box 
+$('#addmenu_input_name').hide();
+$('#addmenu_fixed').hide();
+$('#addmenu_selects').show();
+
 //set name of menu
 $('#addmenu_input_name').val($('#'+target_container).attr('data-name'));
 
