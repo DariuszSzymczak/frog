@@ -137,6 +137,7 @@ span#content_buttons {
   bottom: 0;
   transition: 1s all;
   margin: 0 -0.2vw !important;
+  z-index: 99;
 }
 
 button#accept_page,
