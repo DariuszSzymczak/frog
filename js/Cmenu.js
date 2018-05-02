@@ -8,13 +8,13 @@ function createMenu() {
     //list of first box items
       let menu_ID;
       let box = create_box('addmenu_button', '', '',deleteMenu);
-      let name_input = `<input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu' style="margin-bottom: 1vw"></input></br>\
+      let name_input = `<div id="addmenu_box1"><input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu' style="margin-bottom: 1vw"></input></br>\
       <label for="addmenu_fixed">Przyklejone Menu: </label><input type="checkbox" name="addmenu_fixed" id="addmenu_fixed"></input></br>`;
 
     //list of second box items  
       let select_input = '<div id="addmenu_selects" style="display:none" >\
         <label>Wybierz Stronę </label><select id ="addmenu_input_select"></select>\
-        <table id="addmenu_table"></table></div>';
+        <table id="addmenu_table"></table></div><div>';
 
     // append all to box    
       $('#' + box).append(name_input + select_input);
@@ -39,9 +39,7 @@ function createMenu() {
     // first box button to create menu
       $('#addmenu_create_button').on('click', function () {
         let name_val=$('#addmenu_input_name').val();
-        $('#addmenu_input_name').fadeOut();
-        $('#addmenu_fixed').fadeOut();
-        $(this).fadeOut();
+        $('#addmenu_box1').fadeOut();
         $('#addmenu_selects').fadeIn();
         menu_ID = add_element_to_target(target_container,name_val,'nav',-1,'editMenu');
         $('#'+menu_ID).attr('data-name',name_val);
@@ -88,8 +86,7 @@ createMenu();
 let menu_ID = target_container;
 
 //hide first box 
-$('#addmenu_input_name').hide();
-$('#addmenu_fixed').hide();
+$('#addmenu_box1').hide();
 $('#addmenu_selects').show();
 
 //set name of menu
@@ -110,6 +107,7 @@ $('#'+target_container).find('.nav-item').each(function(){
   $('.addmenu_delete').on('click',function(){
     $(this).parent().remove();
     $(`#${menu_ID}_li_${name}`).remove();
+    console.log('usuwam: '+ menu_ID+'_li_'+name);
   });
 });
 }
