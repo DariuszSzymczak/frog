@@ -28,6 +28,7 @@ function createMenu(edit_values) {
         }
       })
       .done(function (page_list) {
+        $('#addmenu_input_select').append(`<option>home</option>`);
         for (let x = 0; x < page_list.length; x++) {
           console.log('dodaje: ' + page_list[x].name);
           $('#addmenu_input_select').append(`<option>${page_list[x].name}</option>`);
