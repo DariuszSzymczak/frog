@@ -93,6 +93,8 @@ $('#'+target_container).find('.nav-item').each(function(){
   let name = $(this).attr('data-name');
   let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addmenu_delete" data-name="${name}">\
   <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
+  $('#addmenu_table_button_down').parent().parent().before(tr);
+  console.log('name: '+ name);
 });
 }
 
