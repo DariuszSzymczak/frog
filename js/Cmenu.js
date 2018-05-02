@@ -10,14 +10,14 @@ function createMenu() {
       let box = create_box('addmenu_button', '', '',deleteMenu);
       let name_input = `<div id="addmenu_box1"><input type='text' id='addmenu_input_name' placeholder='podaj nazwe menu' style="margin-bottom: 1vw"></input></br>\
       <label for="addmenu_fixed">Przyklejone Menu: </label><input type="checkbox" name="addmenu_fixed" id="addmenu_fixed"></input></br>`;
-      $('#' + box).append('<button id="addmenu_create_button" class="menu_long_button2">Stwórz Menu</button></div>');
+      $('#' + box).append(name_input + '<button id="addmenu_create_button" class="menu_long_button2">Stwórz Menu</button></div>');
     //list of second box items  
       let select_input = '<div id="addmenu_selects" style="display:none" >\
         <label>Wybierz Stronę </label><select id ="addmenu_input_select"></select>\
         <table id="addmenu_table"></table></div>';
 
     // append all to box    
-      $('#' + box).append(name_input + select_input);
+      $('#' + box).append(select_input);
       $('#addmenu_table').append('<tr><td colspan="5"><button id="addmenu_table_button_down" class="menu_long_button2">+</button></td></tr>'); 
       
       $.ajax({
