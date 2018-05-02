@@ -5,7 +5,7 @@ $('#site_button').on('click',Csite);
 
 
 function Csite(){
-  target_container = 'content';
+  target_container = main_container;
   if($('#site_button').attr('data-active') == 0)
   {
     if($('.row').length == 0)

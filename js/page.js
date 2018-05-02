@@ -1,9 +1,9 @@
 // set values of elements width in main screen
 $(document).ready(function () {
   // $('#right_menu_style').delay(1000).trigger('click');
-  $(main_container).attr('data-width', 65);
-  $(main_container).attr('data-left', 30);
-  $(main_container).on('mousedown', function () {
+  $('#'+main_container).attr('data-width', 65);
+  $('#'+main_container).attr('data-left', 30);
+  $('#'+main_container).on('mousedown', function () {
     $(this).find('*').on('mouseup', target_element_mouse)
     $('#css_menu_exit').on('click',css_exit);
   });
@@ -15,12 +15,12 @@ $(document).ready(function () {
 // hide and show left menu, set width of content 
 $('#hide_menu').on('click', function () {
   $(left_menu).toggle();
-  var main_container_width = $(main_container).attr('data-width');
-  var main_container_left = $(main_container).attr('data-left');
+  var main_container_width = $('#'+main_container).attr('data-width');
+  var main_container_left = $('#'+main_container).attr('data-left');
   var logo_width = $('#logo_box').attr('data-width');
   var logo_left = $('#logo_box').attr('data-left');
   if ($('#hide_menu').attr('data-hide') == 0) {
-    $(main_container).css({
+    $('#'+main_container).css({
       "width": '100vw',
       "left": '0vw'
     });
@@ -31,7 +31,7 @@ $('#hide_menu').on('click', function () {
     $('#hide_menu').attr('data-hide', 1);
     $('#hide_menu').text('POKAŻ MENU');
   } else {
-    $(main_container).css({
+    $('#'+main_container).css({
       "width": main_container_width + 'vw',
       "left": main_container_left + 'vw'
     });
@@ -66,7 +66,6 @@ $('#accept_page').on('click', function () {
   $('#info_box_ok').off();
 //cancel save page
 $('#info_box_cancel').click(function () {
-  console.log('kliklo kurwa!');
   $('#blur').animate({
     opacity: '0'
   }, 300).css({
