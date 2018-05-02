@@ -57,10 +57,10 @@ function createMenu(edit_values) {
           <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
       if (direction == true) {
         $('#addmenu_table_button_up').parent().parent().after(tr);
-        $(`#${menu_ID}_ul`).prepend(link);
+        if (!data) $(`#${menu_ID}_ul`).prepend(link);
       } else {
         $('#addmenu_table_button_down').parent().parent().before(tr);
-        $(`#${menu_ID}_ul`).append(link);
+        if (!data) $(`#${menu_ID}_ul`).append(link);
       }
       $(`.addmenu_delete[data-name="${name}"]`).on('click', function () {
         $(this).parent().remove();
