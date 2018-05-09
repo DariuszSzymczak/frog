@@ -72,7 +72,7 @@ function AddSite(edit_values) {
       addsites_addTr(true);
     });
 
-    function addsites_add_to_container
+
     // if (edit_values) {
     //   menu_ID = target_container;
     //   //hide first box 
