@@ -37,7 +37,7 @@ function AddSite(edit_values) {
     console.log(sites_json);
 
     // direction -> true mean Up
-    function addTr(direction, data) {
+    function addsites_addTr(direction, data) {
       var name = $('#addsites_input_select').val();
       if (data) name = data;
       let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addsites_delete" data-name="${name}">\
@@ -53,14 +53,14 @@ function AddSite(edit_values) {
       });
     }
     
-    addTr(false,'home');
+    addsites_addTr(false,'home');
 
     $('#addsites_table_button_down').click(function () {
 
-      addTr(false);
+      addsites_addTr(false);
     });
     $('#addsites_table_button_up').click(function () {
-      addTr(true)
+      addsites_addTr(true);
     });
 
     // if (edit_values) {
