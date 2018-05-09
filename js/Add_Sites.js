@@ -1,11 +1,12 @@
 $(document).ready(function () {
-  add_button_to_menu('addsites_button', 'Dodaj  ryjut Stronę', AddSite);
+  add_button_to_menu('addsites_button', 'Dodaj Stronę', AddSite);
 });
 
 function AddSite(edit_values) {
   check_to_create('addsites_button', function () {
 
-   
+    let box = create_box('addsites_button', '', '', deleteSites);
+    
     //list of second box items  
     let select_input = '<div id="addsites_selects">\
         <label>Wybierz Stronę </label><select id ="addsites_input_select"></select>\
