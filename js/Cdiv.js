@@ -38,7 +38,6 @@ function Create_div()
 
 function edit_div()
 {
-  console.log('here1: '+$('#'+target_container).parent().attr('id'));
   const div_name = target_container;
   const lg = $('#'+div_name).attr('data-lg');
   const md = $('#'+div_name).attr('data-md');
@@ -49,7 +48,7 @@ function edit_div()
   <label for="lg_width">Szerokość ( desktop ) : </label> <input id="div_lg_width" name="div_lg_width" type="number" min="1"  value="'+lg+'" max="12"></input></br> \
   <label for="md_width">Szerokość ( tablet ) : </label> <input id="div_md_width" name="div_md_width" type="number" min="1" value="'+md+'" max="12"></br> \
   <label for="xs_width">Szerokość ( mobile ) : </label> <input id="div_xs_width" name="div_xs_width" type="number" min="1" value="'+xs+'" max="12"></br>';
-  let div_box = create_box('div_button',target_container,div_accept);
+  let div_box = create_box('div_button','',div_accept);
   $('#'+div_box).append(tip+inputs1); 
   create_cancel_button(div_box);
   console.log('here2: '+$('#'+target_container).parent().attr('id'));
