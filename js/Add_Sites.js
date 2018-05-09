@@ -93,6 +93,6 @@ function AddSite(edit_values) {
 //   createMenu(elements);
 // }
 
-// function deleteMenu() {
-//   $('#' + target_container).remove();
-// }
+function deleteSites() {
+  $('#' + target_container).remove();
+}
