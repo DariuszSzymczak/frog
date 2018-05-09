@@ -2,7 +2,7 @@ $(document).ready(function () {
   add_button_to_menu('addsites_button', 'Dodaj Stronę', AddSite);
 });
 
-function createMenu(edit_values) {
+function AddSite(edit_values) {
   check_to_create('addsites_button', function () {
 
    
