@@ -273,11 +273,11 @@ div#logo_box {
     position: fixed;
   }
 
-  #addmenu_table{
+  #addmenu_table, #addsites_table{
     width: 100%;
     color: #eaeaea;
   }
-  #addmenu_table tr td{
+  #addmenu_table tr td,#addsites_table tr td{
     border: 0.2vw solid black;
   }
 
