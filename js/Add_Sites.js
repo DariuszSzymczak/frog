@@ -43,9 +43,9 @@ function AddSite(edit_values) {
       let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addsites_delete" data-name="${name}">\
           <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
       if (direction == true) {
-        $('#addsite_table_button_up').parent().parent().after(tr);
+        $('#addsites_table_button_up').parent().parent().after(tr);
       } else {
-        $('#addmenu_table_button_down').parent().parent().before(tr);
+        $('#addsites_table_button_down').parent().parent().before(tr);
       }
       $(`.addsites_delete[data-name="${name}"]`).on('click', function () {
         $(this).parent().remove();
