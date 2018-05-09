@@ -49,7 +49,7 @@ function AddSite(edit_values) {
       }
       $(`.addsites_delete[data-name="${name}"]`).on('click', function () {
         $(this).parent().remove();
-        $(`#${menu_ID}_li_${name}`).remove();
+        $(`#${name}_content`).remove();
       });
     }
     

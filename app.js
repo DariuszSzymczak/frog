@@ -43,7 +43,7 @@ app.post('/send', function (req, res) {
 });
 app.post('/pages', function (req, res) {
   
-  Modeldo.find({},'name',function (err, pages) {
+  Modeldo.find({},function (err, pages) {
   if (err) return handleError(err);
   res.json(pages);
 });
