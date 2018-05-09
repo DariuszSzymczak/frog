@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  add_button_to_menu('addsites_button', 'Dodaj Stronę', AddSite);
+  add_button_to_menu('addsites_button', 'Dodaj  ryjut Stronę', AddSite);
 });
 
 function AddSite(edit_values) {
