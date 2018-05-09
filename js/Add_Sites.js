@@ -40,12 +40,21 @@ function AddSite(edit_values) {
     function addsites_addTr(direction, data) {
       var name = $('#addsites_input_select').val();
       if (data) name = data;
+      let content_data;
+      for(let x=0;x<sites_json.length;x++){
+        if(name == sites_json[x].name){
+          content_data = `<div id="${name}_content">${sites_json[x].content}</div>`;
+          break;
+        } 
+      } 
       let tr = `<tr><td colspan='4'>${name}</td><td colspan='1'class="addsites_delete" data-name="${name}">\
           <img src="img/x.png"/ class="css_menu_img addmenu_img"></td></tr>`;
       if (direction == true) {
         $('#addsites_table_button_up').parent().parent().after(tr);
+        if(!data) $('#content').prepend(content_data);
       } else {
         $('#addsites_table_button_down').parent().parent().before(tr);
+        if(!data) $('#content').append(content_data);
       }
       $(`.addsites_delete[data-name="${name}"]`).on('click', function () {
         $(this).parent().remove();
@@ -63,6 +72,7 @@ function AddSite(edit_values) {
       addsites_addTr(true);
     });
 
+    function addsites_add_to_container
     // if (edit_values) {
     //   menu_ID = target_container;
     //   //hide first box 
