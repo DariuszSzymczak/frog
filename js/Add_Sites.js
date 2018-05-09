@@ -16,7 +16,7 @@ function AddSite(edit_values) {
     $('#' + box).append(select_input);
     $('#addsites_table').prepend('<tr><td colspan="5"><button id="addsites_table_button_up" class="menu_long_button2">+</button></td></tr>');
     $('#addsites_table').append('<tr><td colspan="5"><button id="addsites_table_button_down" class="menu_long_button2">+</button></td></tr>');
-    let sites_json ={};
+    let sites_json=[{}];
     $.ajax({
         url: "http://frog.ct8.pl/pages/",
         type: "post", //typ połączenia
@@ -25,8 +25,9 @@ function AddSite(edit_values) {
         }
       })
       .done(function (page_list) {
-        sites_json = page_list;
+        
         for (let x = 0; x < page_list.length; x++) {
+          sites_json[x] = page_list[x];
           $('#addsites_input_select').append(`<option>${page_list[x].name}</option>`);
         }
       })
