@@ -18,7 +18,7 @@ function target_element_mouse()
 function target(string1)
 {
   target_container = string1;
-  $('#content div').find('.active_element').removeClass('active_element');
+  $('#content *').find('.active_element').removeClass('active_element');
   $('#'+string1).addClass('active_element'); 
   setTimeout(function(){right_menu_show(string1)},1000);
 }
