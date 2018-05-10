@@ -56,7 +56,11 @@ function AddSite(edit_values) {
         $('#addsites_table_button_down').parent().parent().before(tr);
         if(!data) $('#content').append(content_data);
       }
-      if(!data) target($(`#${name}_content div`).first().attr('id'));
+      if(!data){
+        addSites_changeNames(name);
+        target($(`#${name}_content div`).first().attr('id'));
+        $(`#${name}_content`).find('.plus_button').each(function(){$(this).remove()});
+      } 
       $(`.addsites_delete[data-name="${name}"]`).on('click', function () {
         $(this).parent().remove();
         $(`#${name}_content`).remove();
@@ -91,6 +95,15 @@ function AddSite(edit_values) {
 
 
 }
+
+function addSites_changeNames(name){
+  $(`#${name}_content *`).each(function(){
+    let node_id = this.id; console.log('addsites this id:'+node_id);
+    let new_id = node_id.replace('home',name);
+    this.id = new_id;
+  });
+}
+
 
 // function editMenu() {
 //   let elements = [];
