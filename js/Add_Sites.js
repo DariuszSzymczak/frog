@@ -56,6 +56,7 @@ function AddSite(edit_values) {
         $('#addsites_table_button_down').parent().parent().before(tr);
         if(!data) $('#content').append(content_data);
       }
+      target(`#${name}_content div`);
       $(`.addsites_delete[data-name="${name}"]`).on('click', function () {
         $(this).parent().remove();
         $(`#${name}_content`).remove();

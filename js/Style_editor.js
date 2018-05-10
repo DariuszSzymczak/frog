@@ -4,6 +4,7 @@ var css_class_styles_array = [{}];
 $('#right_menu_style').on('click', function () {
     $(left_menu + ' *').not('#css_menu, #css_menu *').addClass('hide');
     $('#css_menu').show();
+    $('#css_menu_exit').on('click',css_exit);
 });
 
 //action to choose edit css type
