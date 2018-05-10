@@ -10,7 +10,7 @@ function target_element_mouse()
         id = $(this).attr('id');
         if($('.focus').length == 0) target(id);
         parent_id = $(this).parent().attr('id');
-        $('#content div  *:not(.plus_button)').off();
+        $('#content  *:not(.plus_button)').off();
     }
 }
 
