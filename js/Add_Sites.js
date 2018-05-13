@@ -80,8 +80,8 @@ function AddSite(edit_values) {
         console.log('ajdi1: '+ajdi+' || id elementu:'+this.id);
         if(ajdi){
         ajdi =  this.id.match(/^([a-z]|[1-9]|[A-Z])*/);
-        console.log('ajdi2: '+ajdi);
-        addsites_addTr(false,ajdi);
+        console.log('ajdi2: '+ajdi[0]);
+        addsites_addTr(false,ajdi[0]);
         }      
     });
   });
