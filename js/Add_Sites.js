@@ -75,7 +75,7 @@ function AddSite(edit_values) {
       addsites_addTr(true);
     });
 
-    $('#content div').each(function() {
+    $('#content > div').each(function() {
         let ajdi = this.id.match(/.*_content/);
         if(ajdi){
         ajdi =  this.id.match(/^[a-z]*/);
