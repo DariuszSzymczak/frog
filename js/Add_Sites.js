@@ -58,7 +58,7 @@ function AddSite(edit_values) {
       }
       if(!data){
         addSites_changeNames(name);
-        target($(`#${name}_content div`).first().attr('id'));
+        target($(`${name}_content div`).first().attr('id'));
         $(`#${name}_content`).find('.plus_button').each(function(){$(this).remove()});
       } 
       $(`.addsites_delete[data-name="${name}"]`).on('click', function () {
