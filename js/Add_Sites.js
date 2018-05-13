@@ -82,10 +82,10 @@ function AddSite(edit_values) {
         if(ajdi){
         ajdi =  this.id.match(/^([a-z]|[1-9]|[A-Z])*/);
         console.log('ajdi2: '+ajdi[0]);
-        addsites_addTr(false,ajdi[0]);
-        if(ajdi == 'home') $('.addsites_delete[data-name="home"]').remove();
+        addsites_addTr(false,ajdi[0]); 
         }      
     });
+    $('.addsites_delete[data-name="home"]').remove();
   });
 
 
