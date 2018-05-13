@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var PageScheme = require('./lib/PageScheme');
 var app = express();
 
 app.use(bodyParser.json()); // support json encoded bodies
@@ -14,23 +14,9 @@ app.use('/css', express.static(__dirname + '/css'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use('/img', express.static(__dirname + '/img'));
 
-mongoose.connect('mongodb://mo7636_frog:Lewatywa1!@127.0.0.1:27017/mo7636_frog', function (err) {
-
-  if (err) throw err;
-
-  console.log('Successfully connected');
-
-});
-var userSchema = mongoose.Schema({
-  name: String,
-  content: String,
-  main: Boolean
-});
-var Modeldo = mongoose.model('pages', userSchema);
-
 app.post('/send', function (req, res) {
   
-  let data_to_save = new Modeldo({
+  let data_to_save = new PageScheme({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     content: req.body.content,
@@ -40,7 +26,8 @@ app.post('/send', function (req, res) {
   data_to_save.save(function (err) {
     if (err) throw err;
   });
-  Modeldo.find({},'name',function (err, pages) {
+
+  PageScheme.find({},'name',function (err, pages) {
   if (err) return handleError(err);
   res.json(pages);
   });
@@ -49,7 +36,7 @@ app.post('/send', function (req, res) {
 
 app.post('/pages', function (req, res) {
   
-  Modeldo.find({},function (err, pages) {
+  PageScheme.find({},function (err, pages) {
   if (err) return handleError(err);
   res.json(pages);
   });
@@ -57,7 +44,7 @@ app.post('/pages', function (req, res) {
 
 app.post('/pages/main', function (req, res) {
   
-  Modeldo.findOne({'main' : true},function (err, pages) {
+  PageScheme.findOne({'main' : true},function (err, pages) {
   if (err) {
     return handleError(err);
     res.status(500).send();
