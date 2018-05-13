@@ -65,6 +65,7 @@ function AddSite(edit_values) {
         $(this).parent().remove();
         $(`#${name}_content`).remove();
       });
+      
     }
     
       $('#addsites_table_button_down').click(function () {
@@ -82,6 +83,7 @@ function AddSite(edit_values) {
         ajdi =  this.id.match(/^([a-z]|[1-9]|[A-Z])*/);
         console.log('ajdi2: '+ajdi[0]);
         addsites_addTr(false,ajdi[0]);
+        if(ajdi == 'home') $('.addsites_delete[data-name="home"]').remove();
         }      
     });
   });
