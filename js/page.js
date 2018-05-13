@@ -5,7 +5,7 @@ $(document).ready(function () {
   $('#content').attr('data-left', 30);
   $('#content').on('mousedown', function () {
     $('#content div').find('*').on('mouseup', target_element_mouse)
-    $('#css_menu_exit').on('click',css_exit);
+    
   });
 
 
@@ -60,7 +60,9 @@ $('#accept_page').on('click', function () {
     <button id="info_box_cancel">ANULUJ</button> \
     </span> \
     <label for="info_box_input_name">Podaj nazwę dla strony: </label> \
-    <input id="info_box_input_name" type="text"></input> ';
+    <input id="info_box_input_name" type="text"></input> \
+    <label for="info_box_input_main">Czy ustawić jako główną? : </label>\
+    <input type="checkbox" id="info_box_input_main"></input>';
 
   $('#info_box').html(inner_text);
   $('#info_box_ok').off();
@@ -75,6 +77,8 @@ $('#info_box_cancel').click(function () {
 
   //send site in ajax 
   $('#info_box_ok').click(function () {
+    var main = false;
+    if($('#info_box_input_main:checked').length == 1) main = true;
     var name_site = $('#info_box_input_name').val();
     var page_content = $('#content').html();
     $.ajax({
@@ -82,7 +86,8 @@ $('#info_box_cancel').click(function () {
         type: "post", //typ połączenia
         data: {
           "name": name_site,
-          "content": page_content
+          "content": page_content,
+          "main": main
         }
       })
       .done(function (response) {
