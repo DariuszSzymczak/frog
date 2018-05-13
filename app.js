@@ -23,15 +23,18 @@ mongoose.connect('mongodb://mo7636_frog:Lewatywa1!@127.0.0.1:27017/mo7636_frog',
 });
 var userSchema = mongoose.Schema({
   name: String,
-  content: String
+  content: String,
+  main: Boolean
 });
 var Modeldo = mongoose.model('pages', userSchema);
+
 app.post('/send', function (req, res) {
   
   let data_to_save = new Modeldo({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
-    content: req.body.content
+    content: req.body.content,
+    main: req.body.main
   });
   data_to_save.save(function (err) {
     if (err) throw err;
@@ -41,6 +44,8 @@ app.post('/send', function (req, res) {
   res.json(pages);
   });
 });
+
+
 app.post('/pages', function (req, res) {
   
   Modeldo.find({},function (err, pages) {
