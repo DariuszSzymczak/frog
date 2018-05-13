@@ -77,9 +77,10 @@ function AddSite(edit_values) {
 
     $('#content > div').each(function() {
         let ajdi = this.id.match(/.*_content/);
+        console.log('ajdi1: '+ajdi+' || id elementu:'+this.id);
         if(ajdi){
         ajdi =  this.id.match(/^[a-z]*/);
-        console.log('ajdi: '+ajdi+' || id elementu:'+this.id);
+        console.log('ajdi2: '+ajdi);
         addsites_addTr(false,ajdi);
         }      
     });
