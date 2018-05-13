@@ -79,7 +79,7 @@ function AddSite(edit_values) {
         let ajdi = this.id.match(/.*_content/);
         if(ajdi){
         ajdi =  this.id.match(/^[a-z]*/);
-        console.log('ajdi: '+ajdi);
+        console.log('ajdi: '+ajdi+' || id elementu:'+this.id);
         addsites_addTr(false,ajdi);
         }      
     });
