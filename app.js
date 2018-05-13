@@ -4,7 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var PageScheme = require('./lib/PageScheme');
-
+var sendPages = require('./routes/sendPage');
 var app = express(); //use express.js as an framework in application
 
 //switch on all features to work with the requests
@@ -17,7 +17,7 @@ app.use('/css', express.static(__dirname + '/css'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use('/img', express.static(__dirname + '/img'));
 
-var sendPages = require('./routes/sendPage');
+
 app.use('/send',sendPages);
 
 
@@ -29,18 +29,9 @@ app.post('/pages', function (req, res) {
   res.json(pages);
   });
 });
+var serveMain = require('./routes/serveMain');
+app.use('/pages/main',serveMain);
 
-app.post('/pages/main', function (req, res) {
-  
-  PageScheme.findOne({'main' : true},function (err, pages) {
-  if (err) {
-    return handleError(err);
-    res.status(500).send();
-  }
-  if(!pages) res.status(404).send();
-  res.status(200).json(pages);
-  });
-});
 
 app.get('/', function (req, res) {
   res.sendFile('generator.html', {
