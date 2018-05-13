@@ -34,7 +34,7 @@ function AddSite(edit_values) {
       .fail(function () {
         console.warn("addsites: Wystąpił błąd w połączniu");
       });
-    console.log(sites_json);
+    
 
     // direction -> true mean Up
     function addsites_addTr(direction, data) {
@@ -79,6 +79,7 @@ function AddSite(edit_values) {
         let ajdi = this.id.match(/.*_content/);
         if(ajdi){
         ajdi =  this.id.match(/^[a-z]*/);
+        console.log('ajdi: '+ajdi);
         addsites_addTr(false,ajdi);
         }      
     });
@@ -90,7 +91,7 @@ function AddSite(edit_values) {
 
 function addSites_changeNames(name){
   $(`#${name}_content *`).each(function(){
-    let node_id = this.id; console.log('addsites this id:'+node_id);
+    let node_id = this.id;
     let new_id = node_id.replace('home',name);
     this.id = new_id;
   });
