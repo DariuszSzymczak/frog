@@ -52,6 +52,7 @@ app.post('/pages', function (req, res) {
   Modeldo.find({},function (err, pages) {
   if (err) return handleError(err);
   res.json(pages);
+  });
 });
 
 app.post('/pages/main', function (req, res) {
@@ -61,8 +62,9 @@ app.post('/pages/main', function (req, res) {
     return handleError(err);
     res.status(500).send();
   }
-  res.json(pages);
-});
+  if(!pages) res.status(404).send();
+  res.status(200).send();
+  });
 });
 
 app.get('/', function (req, res) {
