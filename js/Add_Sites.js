@@ -67,9 +67,7 @@ function AddSite(edit_values) {
       });
     }
     
-    addsites_addTr(false,'home');
-
-    $('#addsites_table_button_down').click(function () {
+      $('#addsites_table_button_down').click(function () {
 
       addsites_addTr(false);
     });
@@ -77,19 +75,13 @@ function AddSite(edit_values) {
       addsites_addTr(true);
     });
 
-
-    // if (edit_values) {
-    //   menu_ID = target_container;
-    //   //hide first box 
-    //   $('#addmenu_box1').hide();
-    //   $('#addmenu_selects').show();
-    //   //add up plus button 
-    //   $('#addmenu_table').prepend('<tr><td colspan="5"><button id="addmenu_table_button_up" class="menu_long_button2">+</button></td></tr>');
-    //   $('#addmenu_table_button_up').click(function () {
-    //     addTr(true)
-    //   });
-    //   for (let x = 0; x < edit_values.length; x++) addTr('', edit_values[x]);
-    // }
+    $('#content div').each(function() {
+        let ajdi = this.id.match(/.*_content/);
+        if(ajdi){
+        ajdi =  this.id.match(/^[a-z]*/);
+        addsites_addTr(false,ajdi);
+        }      
+    });
   });
 
 
@@ -103,17 +95,6 @@ function addSites_changeNames(name){
     this.id = new_id;
   });
 }
-
-
-// function editMenu() {
-//   let elements = [];
-//   //get items from target menu
-//   $('#' + target_container).find('.nav-item').each(function () {
-//     let name = $(this).attr('data-name');
-//     elements.push(name);
-//   });
-//   createMenu(elements);
-// }
 
 function deleteSites() {
   $('#' + target_container).remove();
