@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var PageScheme = require('./lib/PageScheme');
 var sendPages = require('./routes/sendPage');
 var serveMain = require('./routes/serveMain');
+var testserv = require('./routes/test');
 var app = express(); //use express.js as an framework in application
 
 //switch on all features to work with the requests
@@ -20,7 +21,7 @@ app.use('/img', express.static(__dirname + '/img'));
 
 
 app.use('/send',sendPages);
-
+app.use('/test',testserv);
 
 
 app.post('/pages', function (req, res) {
