@@ -63,7 +63,7 @@ app.post('/pages/main', function (req, res) {
     res.status(500).send();
   }
   if(!pages) res.status(404).send();
-  res.status(200).send();
+  res.status(200).json(pages);
   });
 });
 
