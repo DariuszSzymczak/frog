@@ -96,6 +96,7 @@ function addSites_changeNames(name){
   $(`#${name}_content *`).each(function(){
     let node_id = this.id;
     let new_id = node_id.replace('home',name);
+    if($('#'+new_id).length != 0) new_id += $('#'+new_id).length;
     this.id = new_id;
   });
 }
