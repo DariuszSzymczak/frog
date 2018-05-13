@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var PageScheme = require('./lib/PageScheme');
 var sendPages = require('./routes/sendPage');
+var serveMain = require('./routes/serveMain');
 var app = express(); //use express.js as an framework in application
 
 //switch on all features to work with the requests
@@ -29,7 +30,7 @@ app.post('/pages', function (req, res) {
   res.json(pages);
   });
 });
-var serveMain = require('./routes/serveMain');
+
 app.use('/pages/main',serveMain);
 
 
