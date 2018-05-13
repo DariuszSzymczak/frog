@@ -36,6 +36,7 @@ app.post('/send', function (req, res) {
     content: req.body.content,
     main: req.body.main
   });
+
   data_to_save.save(function (err) {
     if (err) throw err;
   });
@@ -52,8 +53,16 @@ app.post('/pages', function (req, res) {
   if (err) return handleError(err);
   res.json(pages);
 });
-  
 
+app.post('/pages/main', function (req, res) {
+  
+  Modeldo.findOne({'main' : true},function (err, pages) {
+  if (err) {
+    return handleError(err);
+    res.status(500).send();
+  }
+  res.json(pages);
+});
 });
 
 app.get('/', function (req, res) {
