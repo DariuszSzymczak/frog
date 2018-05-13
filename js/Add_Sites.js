@@ -79,7 +79,7 @@ function AddSite(edit_values) {
         let ajdi = this.id.match(/.*_content/);
         console.log('ajdi1: '+ajdi+' || id elementu:'+this.id);
         if(ajdi){
-        ajdi =  this.id.match(/^[a-z]*/);
+        ajdi =  this.id.match(/^([a-z]|[1-9]|[A-Z])*/);
         console.log('ajdi2: '+ajdi);
         addsites_addTr(false,ajdi);
         }      
