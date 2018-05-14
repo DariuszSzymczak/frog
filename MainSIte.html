@@ -25,5 +25,23 @@
 <body>
 	<div id="content"></div>
 </body>
+<script>
+	$.ajax({
+        url: "http://frog.ct8.pl/pages/",
+        type: "post", //typ połączenia
+        data: {
+          "name": "getPages"
+        }
+      })
+      .done(function (page_list) {
 
+        for (let x = 0; x < page_list.length; x++) {
+          sites_json[x] = page_list[x];
+          $('#addsites_input_select').append(`<option>${page_list[x].name}</option>`);
+        }
+      })
+      .fail(function () {
+        console.warn("addsites: Wystąpił błąd w połączniu");
+      });
+</script>
 </html>
