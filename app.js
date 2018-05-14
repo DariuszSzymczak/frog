@@ -3,10 +3,16 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+
+//libraries
 var PageScheme = require('./lib/PageScheme');
-//var sendPages = require('./routes/sendPage');
-//var serveMain = require('./routes/serveMain');
+
+//include routes
+var sendPage = require('./routes/sendPage');
+var serveMain = require('./routes/serveMain');
 var testserv = require('./routes/test');
+var showPages = require('./routes/showPages');
+
 var app = express(); //use express.js as an framework in application
 
 //switch on all features to work with the requests
@@ -19,20 +25,14 @@ app.use('/css', express.static(__dirname + '/css'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use('/img', express.static(__dirname + '/img'));
 
-
-// app.use('/send',sendPages);
+//use included routes
+app.use('/send',sendPage);
 app.use('/test',testserv);
+app.use('/pages/main',serveMain);
+app.use('/pages',showPages);
 
 
-// app.post('/pages', function (req, res) {
-  
-//   PageScheme.find({},function (err, pages) {
-//   if (err) return handleError(err);
-//   res.json(pages);
-//   });
-// });
-
-// app.use('/pages/main',serveMain);
+ 
 
 
 app.get('/', function (req, res) {

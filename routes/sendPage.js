@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var PageScheme = require('../lib/PageScheme');
 
-router.post('/send', function (req, res) {
+router.post('/', function (req, res) {
   
     let data_to_save = new PageScheme({
       _id: new mongoose.Types.ObjectId(),
