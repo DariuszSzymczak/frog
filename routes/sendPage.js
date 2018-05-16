@@ -8,7 +8,26 @@ var mongoose = require('mongoose');
 app.use(bodyParser.json()); // support json encoded bodies from requests
 app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies from requests
 
+   // let data_to_save = new PageScheme({
+    //   _id: new mongoose.Types.ObjectId(),
+    //   name: req.body.name,
+    //   content: req.body.content,
+    //   main: req.body.main
+    // });
+
+
+    // data_to_save.save(function (err) {
+    //   if (err) throw err;
+    // });
+    
+    // PageScheme.find({},'name',function (err, pages) {
+    // if (err) return handleError(err);
+    // res.json(pages);
+    // });
+
+
 router.post('/', function (req, res) {
+  
   PageScheme.findOne({'main' : true},function (err, pages) {
     if (err) {
       return handleError(err);
@@ -17,6 +36,8 @@ router.post('/', function (req, res) {
     if(!pages) res.status(404).send();
     res.status(200).json(pages);
     });
+
+ 
   });
 
   module.exports = router;
