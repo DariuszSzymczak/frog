@@ -18,13 +18,13 @@ router.post('/', function (req, res) {
     });
     
     if(req.body.main == true){
-      Pagescheme.find({'main' : true},function(err,foundObject){
+      Pagescheme.findOne({'main' : true},function(err,foundObject){
         if(err){
           res.status(500).send();
         }
         else{
           foundObject.main = false;
-          foundObject.save(function(err,updatedObject){
+          foundObject.save(function(err){
             if(err) res.status(500).send();
           });
         }
