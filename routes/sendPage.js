@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies from
 
 
 router.post('/', function (req, res) {
-  if(req.body.main == true){
+  if(req.body.main == "true"){
 
     PageScheme.findOne({'main' : true},function (err, pages) {
       if (err) {
@@ -38,7 +38,7 @@ router.post('/', function (req, res) {
       res.status(200).json(pages);
       });
   }
-  else res.send("false");
+  else res.send(req.body.main);
 
  
   });
