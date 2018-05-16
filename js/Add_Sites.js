@@ -5,7 +5,7 @@ $(document).ready(function () {
 function AddSite(edit_values) {
   check_to_create('addsites_button', function () {
 
-    let box = create_box('addsites_button', '', '', deleteSites);
+    let box = create_box('addsites_button', '', '');
 
     //list of second box items  
     let select_input = '<div id="addsites_selects">\
@@ -101,6 +101,3 @@ function addSites_changeNames(name){
   });
 }
 
-function deleteSites() {
-  $('#' + target_container).remove();
-}
