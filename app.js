@@ -31,7 +31,7 @@ app.use('/pages/main',serveMain);
 app.use('/pages',showPages);
 // app.use('/',getIndex);
 app.get('/', function (req, res) {
-  res.sendFile('chuj.html', {
+  res.sendFile('main.html', {
     root: __dirname
   });
 });
