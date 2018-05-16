@@ -18,7 +18,7 @@ router.post('/', function (req, res) {
     });
     
     if(req.body.main == true){
-      Pagescheme.findOne({main:true},function(err,foundObject){
+      Pagescheme.find({'main' : true},function(err,foundObject){
         if(err){
           res.status(500).send();
         }
@@ -31,7 +31,7 @@ router.post('/', function (req, res) {
       });
     }
 
-    
+
 
     data_to_save.save(function (err) {
       if (err) throw err;
