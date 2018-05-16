@@ -26,22 +26,21 @@
 	<div id="content"></div>
 </body>
 <script>
+	$(document).ready(function () {	
 	$.ajax({
-        url: "http://frog.ct8.pl/pages/",
+        url: "http://frog.ct8.pl/pages/main",
         type: "post", //typ połączenia
         data: {
           "name": "getPages"
         }
       })
-      .done(function (page_list) {
-
-        for (let x = 0; x < page_list.length; x++) {
-          sites_json[x] = page_list[x];
-          $('#addsites_input_select').append(`<option>${page_list[x].name}</option>`);
-        }
+      .done(function (mainPage) {
+				document.title = mainPage.name;
+				$('#content').html(mainPage.content);        
       })
       .fail(function () {
         console.warn("addsites: Wystąpił błąd w połączniu");
-      });
+			});
+		});
 </script>
 </html>

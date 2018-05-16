@@ -11,6 +11,7 @@ var PageScheme = require('./lib/PageScheme');
 var sendPage = require('./routes/sendPage');
 var serveMain = require('./routes/serveMain');
 var showPages = require('./routes/showPages');
+var getIndex = require('./routes/getIndex');
 
 var app = express(); //use express.js as an framework in application
 
@@ -28,15 +29,6 @@ app.use('/img', express.static(__dirname + '/img'));
 app.use('/send',sendPage);
 app.use('/pages/main',serveMain);
 app.use('/pages',showPages);
-
-
- 
-
-
-app.get('/', function (req, res) {
-  res.sendFile('generator.html', {
-    root: __dirname
-  });
-});
+app.use('/',getIndex);
 
 app.listen(process.env.PORT || 9000, process.env.IP || '0.0.0.0');
