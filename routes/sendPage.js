@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies from
 router.post('/', function (req, res) {
   
 
-    res.send(req.body.main);
+
     if(req.body.main == true){
       PageScheme.findOne({'main' : true},function (err, pages) {
         if (err) {
