@@ -10,12 +10,7 @@ app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies from
 
 router.post('/', function (req, res) {
   
-    let data_to_save = new PageScheme({
-      _id: new mongoose.Types.ObjectId(),
-      name: req.body.name,
-      content: req.body.content,
-      main: req.body.main
-    });
+
     
     if(req.body.main == true){
       Pagescheme.findOne({'main' : true},function(err,foundObject){
@@ -26,11 +21,19 @@ router.post('/', function (req, res) {
           foundObject.main = false;
           foundObject.save(function(err){
             if(err) res.status(500).send();
+            
           });
+          res.status(200).json(foundObject);
         }
       });
     }
 
+    let data_to_save = new PageScheme({
+      _id: new mongoose.Types.ObjectId(),
+      name: req.body.name,
+      content: req.body.content,
+      main: req.body.main
+    });
 
 
     data_to_save.save(function (err) {
