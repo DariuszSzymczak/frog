@@ -10,6 +10,7 @@ function create_table()
   {
     let table_id = add_element_to_target(target_container,'table','table',-1,'edit_table');
     $('#'+table_id).text('edytuj mnie');
+    $('#'+table_id).addClass('table');
     let main_box = create_box('table2_button',table_id,accept_all);
     create_plus_button(main_box,function(){create_tr(main_box,table_id)});
 

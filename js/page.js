@@ -80,6 +80,7 @@ $('#info_box_cancel').click(function () {
     var main = false;
     if($('#info_box_input_main:checked').length == 1) main = true;
     var name_site = $('#info_box_input_name').val();
+    $('#content').find('.plus_button').each(function(){$(this).remove();});
     var page_content = $('#content').html();
     $.ajax({
         url: "http://frog.ct8.pl/send/",
