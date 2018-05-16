@@ -30,9 +30,8 @@
 	$.ajax({
         url: "http://frog.ct8.pl/pages/main",
         type: "post", //typ połączenia
-        data: {
-          "name": "getPages"
-        }
+		crossDomain: true,
+   		 dataType: 'jsonp',
       })
       .done(function (mainPage) {
 				document.title = mainPage.name;
