@@ -20,30 +20,29 @@ router.post('/', function (req, res) {
         else{
           foundObject.main = false;
           foundObject.save(function(err){
-            if(err) res.status(500).send();
-            
+            if(err) res.status(500).send();            
           });
-          res.status(200).json(foundObject);
+          res.send("wyslalo jakies gowno");
         }
       });
     }
 
-    let data_to_save = new PageScheme({
-      _id: new mongoose.Types.ObjectId(),
-      name: req.body.name,
-      content: req.body.content,
-      main: req.body.main
-    });
+    // let data_to_save = new PageScheme({
+    //   _id: new mongoose.Types.ObjectId(),
+    //   name: req.body.name,
+    //   content: req.body.content,
+    //   main: req.body.main
+    // });
 
 
-    data_to_save.save(function (err) {
-      if (err) throw err;
-    });
+    // data_to_save.save(function (err) {
+    //   if (err) throw err;
+    // });
     
-    PageScheme.find({},'name',function (err, pages) {
-    if (err) return handleError(err);
-    res.json(pages);
-    });
+    // PageScheme.find({},'name',function (err, pages) {
+    // if (err) return handleError(err);
+    // res.json(pages);
+    // });
   });
 
   module.exports = router;
