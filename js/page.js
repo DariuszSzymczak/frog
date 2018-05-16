@@ -4,7 +4,7 @@ $(document).ready(function () {
   $('#content').attr('data-width', 65);
   $('#content').attr('data-left', 30);
   $('#content').on('mousedown', function () {
-    $('#content div').find('*').on('mouseup', target_element_mouse)
+    $('#content > div').find('*').on('mouseup', target_element_mouse)
     
   });
 
