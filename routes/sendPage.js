@@ -16,11 +16,27 @@ router.post('/', function (req, res) {
       content: req.body.content,
       main: req.body.main
     });
-  
+    
+    if(req.body.main == true){
+      Pagescheme.findOne({main:true},function(err,foundObject){
+        if(err){
+          res.status(500).send();
+        }
+        else{
+          foundObject.main = false;
+          foundObject.save(function(err,updatedObject){
+            if(err) res.status(500).send();
+          });
+        }
+      });
+    }
+
+    
+
     data_to_save.save(function (err) {
       if (err) throw err;
     });
-  
+    
     PageScheme.find({},'name',function (err, pages) {
     if (err) return handleError(err);
     res.json(pages);

@@ -10,7 +10,6 @@ var PageScheme = require('./lib/PageScheme');
 //include routes
 var sendPage = require('./routes/sendPage');
 var serveMain = require('./routes/serveMain');
-var testserv = require('./routes/test');
 var showPages = require('./routes/showPages');
 
 var app = express(); //use express.js as an framework in application
@@ -27,7 +26,6 @@ app.use('/img', express.static(__dirname + '/img'));
 
 //use included routes
 app.use('/send',sendPage);
-app.use('/test',testserv);
 app.use('/pages/main',serveMain);
 app.use('/pages',showPages);
 
