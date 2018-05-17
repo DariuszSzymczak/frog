@@ -36,7 +36,8 @@ xhr.addEventListener('load', function() {
         if (this.status === 200) {
 			let res = JSON.parse(this.responseText);
 			console.log(res);
-			document.getElementById('content').innerHTML = res;			
+			document.getElementById('content').innerHTML = res.content;	
+			document.title = res.name;		
 		}
 		else console.log(xhr.status);
     });
