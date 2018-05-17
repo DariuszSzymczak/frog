@@ -34,7 +34,9 @@ xhr.open("POST", "/pages/main", true);
 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhr.addEventListener('load', function() {
         if (this.status === 200) {
-            console.log(this.responseXML);
+			let res = JSON.parse(this.responseText);
+			console.log(res);
+			document.getElementById('content').innerHTML(res);			
 		}
 		else console.log(xhr.status);
     });
