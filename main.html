@@ -30,11 +30,14 @@ let xhr = new XMLHttpRequest();
 
 //typ połączenia, url, czy asynchroniczen
 xhr.open("POST", "https://frog.ct8.pl/pages/main", true);
-
+xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhr.addEventListener('load', function() {
-	console.log('Wynik połączenia:');
-	console.log(this);
-})
+        if (this.status === 200) {
+            console.log(this.responseText);
+		}
+		else console.log(xhr.status);
+    })
+
 
 xhr.send();
 </script>
