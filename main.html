@@ -30,7 +30,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 	let xhr = new XMLHttpRequest();
 //typ połączenia, url, czy asynchroniczen
-xhr.open("POST", "https://frog.ct8.pl/pages/main", true);
+xhr.open("POST", "/pages/main", true);
 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhr.addEventListener('load', function() {
         if (this.status === 200) {
