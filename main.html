@@ -26,8 +26,9 @@
 	<div id="content"></div>
 </body>
 <script>
-let xhr = new XMLHttpRequest();
 
+document.addEventListener("DOMContentLoaded", function(event) {
+	let xhr = new XMLHttpRequest();
 //typ połączenia, url, czy asynchroniczen
 xhr.open("POST", "https://frog.ct8.pl/pages/main", true);
 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -36,9 +37,8 @@ xhr.addEventListener('load', function() {
             console.log(this.responseText);
 		}
 		else console.log(xhr.status);
-    })
-
-
+    });
 xhr.send();
+});
 </script>
 </html>
