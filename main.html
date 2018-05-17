@@ -26,22 +26,16 @@
 	<div id="content"></div>
 </body>
 <script>
-	$(document).ready(function () {	
-	$.ajax({
-        url: "http://frog.ct8.pl/pages/main",
-		type: "post", //typ połączenia
-		dataType: "json",
-        data: {
-          "name": "getPages"
-        }
-      })
-      .done(function (mainPage) {
-				document.title = mainPage.name;
-				$('#content').html(mainPage.content);        
-      })
-      .fail(function () {
-        console.warn("addsites: Wystąpił błąd w połączniu");
-			});
-		});
+let xhr = new XMLHttpRequest();
+
+//typ połączenia, url, czy asynchroniczen
+xhr.open("POST", "https://frog.ct8.pl/pages/main", true);
+
+xhr.addEventListener('load', function() {
+	console.log('Wynik połączenia:');
+	console.log(this);
+})
+
+xhr.send();
 </script>
 </html>
