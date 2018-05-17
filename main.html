@@ -36,7 +36,7 @@ xhr.addEventListener('load', function() {
         if (this.status === 200) {
 			let res = JSON.parse(this.responseText);
 			console.log(res);
-			document.getElementById('content').innerHTML(res);			
+			document.getElementById('content').innerHTML = res;			
 		}
 		else console.log(xhr.status);
     });
