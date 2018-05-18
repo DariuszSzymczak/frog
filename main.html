@@ -27,7 +27,7 @@
 </head>
 
 <body>
-	<div id="content"></div>
+	<div id="content-main"></div>
 </body>
 <script>
 
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	xhr.addEventListener('load', function() {
 			if (this.status === 200) {
 				let res = JSON.parse(this.responseText);
-				document.getElementById('content').innerHTML = res.content;	
+				document.getElementById('content-main').innerHTML = res.content;	
 				document.title = res.name;		
 			}
 			else console.log(xhr.status);
