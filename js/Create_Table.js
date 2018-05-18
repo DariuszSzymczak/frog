@@ -10,6 +10,7 @@ function create_table()
   {
     let table_id = add_element_to_target(target_container,'table','table',-1,'edit_table');
     $('#'+table_id).text('edytuj mnie');
+    $('#'+table_id).addClass('table');
     let main_box = create_box('table2_button',table_id,accept_all);
     create_plus_button(main_box,function(){create_tr(main_box,table_id)});
 
@@ -152,8 +153,8 @@ function show_td()
   let colspan = $('#'+td_id).attr('colspan');
   let rowspan = $('#'+td_id).attr('rowspan');
   let nr = $('#'+td_id).attr('data-nr');
-  let inputs1 =  '<label for="td_width">Wysokość ( rowspan ) : </label> <input id="td_width" type="number" min="1" name="td_width" value="'+rowspan+'" ></input></br> \
-  <label for="td_heigth">Szerokość ( colspan ) : </label> <input id="td_heigth" name="td_heigth" type="number" min="1" value="'+colspan+'"  ></br>';
+  let inputs1 =  '<label for="td_width">Wysokość ( rowspan ) : </label> <input id="td_width" type="number" min="1" name="td_width" value="'+colspan+'" ></input></br> \
+  <label for="td_heigth">Szerokość ( colspan ) : </label> <input id="td_heigth" name="td_heigth" type="number" min="1" value="'+rowspan+'"  ></br>';
   let inputs2 = '<p>TD: <input type="radio" name="td_type" value="TD" checked ></input> TH: <input type="radio" name="td_type" value="TH"></input></p>';
   let td_box = create_box(this_id,td_id,td_accept,td_cancel);
   $('#'+td_box).append(inputs1+inputs2);

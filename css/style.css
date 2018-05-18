@@ -57,19 +57,16 @@ button {
 }
 
 #content table tr td {
-  background: #1b1b1b;
-  border: 0.2vw solid #090909;
-  color: #eaeaea;
+
 }
 
 #content table tr th {
-  background: #0f8a29;
   border: 0.2vw solid #090909;
 }
 
 h1,
 h2 {
-  color: #bb021c;
+  color: #132769;
   letter-spacing: 5px;
 }
 
@@ -86,7 +83,6 @@ h2 {
 }
 
 #content div div {
-  border: 0.05vw solid #a6a6a6;
   padding: 0;
 }
 
@@ -273,11 +269,11 @@ div#logo_box {
     position: fixed;
   }
 
-  #addmenu_table{
+  #addmenu_table, #addsites_table{
     width: 100%;
     color: #eaeaea;
   }
-  #addmenu_table tr td{
+  #addmenu_table tr td,#addsites_table tr td{
     border: 0.2vw solid black;
   }
 

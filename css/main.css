@@ -1,0 +1,39 @@
+
+#content-main {
+    overflow: visible !important;
+    width: 92vw;
+    position: absolute;
+    left: 4vw;
+    top: 0vw;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
+    -moz-box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
+    box-shadow: 1px 1px 20px -1px rgba(15, 15, 15, 1);
+    z-index: 10;
+}
+
+
+#content-main tr {
+    width: 100%;
+  }
+  
+  #content-main table {
+    width: 100%;
+    margin: auto;
+  }
+  
+  #content-main img{
+    width: 100%;
+  }
+  
+  
+
+
+  
+#content-main div div {
+    padding: 0;
+  }
+  
+  #content-main * {
+    cursor: pointer;
+  }
